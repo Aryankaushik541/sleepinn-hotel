@@ -5,7 +5,8 @@ import Amenities from "./aminities.jsx";
 import Room1 from './room1.jsx'; // Import Room1 component
 import Room2 from './room2.jsx';
 import './room2.css';
-
+import Room3 from './room3.jsx';
+import './room3.css';
 export default function Home() {
     const [showDesktopDropdown, setShowDesktopDropdown] = useState(false);
     const [showMobileNavigation, setShowMobileNavigation] = useState(false);
@@ -16,7 +17,17 @@ export default function Home() {
     // Room1 Modal States - MOVED TO TOP LEVEL
     const [isRoom1Open, setIsRoom1Open] = useState(false);
     const [isRoom2Open, setIsRoom2Open] = useState(false);
+    const [isRoom3Open, setIsRoom3Open] = useState(false);
     // Functions add karo
+    const openRoom3Modal = () => {
+        setIsRoom3Open(true);
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeRoom3Modal = () => {
+        setIsRoom3Open(false);
+        document.body.style.overflow = 'unset';
+    };
     const openRoom2Modal = () => {
         setIsRoom2Open(true);
         document.body.style.overflow = 'hidden';
@@ -424,13 +435,16 @@ export default function Home() {
 
                         {/* Room 3 */}
                         <div className="room-card">
-                            <div className="room-image">
+                            <div className="room-image" onClick={openRoom3Modal} style={{ cursor: 'pointer' }}>
                                 <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1200&q=80" alt="1 King Bed Suite" />
                                 <span className="room-count">2</span>
+                                <div className="image-overlay">
+                                    <span className="view-photos">View Details</span>
+                                </div>
                             </div>
 
                             <div className="room-details">
-                                <h3>1 King Bed, Nonsmoking</h3>
+                                <h3>1 King Bed Suite, Nonsmoking</h3>
 
                                 <div className="room-specs">
                                     <span className="spec">🛏️ 1 King Bed</span>
@@ -451,7 +465,7 @@ export default function Home() {
                                     </div>
                                 </div>
 
-                                <button className="room-details-btn">Room Details</button>
+                                <button className="room-details-btn" onClick={openRoom3Modal}>Room Details</button>
                             </div>
 
                             <div className="room-pricing">
@@ -466,7 +480,8 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-
+                {/* Room 3 Modal */}
+                {isRoom3Open && <Room3 isOpen={isRoom3Open} onClose={closeRoom3Modal} />}
                 {/* Room1 Modal */}
                 <Room1 isOpen={isRoom1Open} onClose={closeRoom1Modal} />
                 {/* ============================ */}
