@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import "./home.css";
 import Amenities from "./aminities.jsx";
 import Room1 from './room1.jsx'; // Import Room1 component
+import Room2 from './room2.jsx';
+import './room2.css';
 
 export default function Home() {
     const [showDesktopDropdown, setShowDesktopDropdown] = useState(false);
@@ -13,7 +15,17 @@ export default function Home() {
 
     // Room1 Modal States - MOVED TO TOP LEVEL
     const [isRoom1Open, setIsRoom1Open] = useState(false);
+    const [isRoom2Open, setIsRoom2Open] = useState(false);
+    // Functions add karo
+    const openRoom2Modal = () => {
+        setIsRoom2Open(true);
+        document.body.style.overflow = 'hidden';
+    };
 
+    const closeRoom2Modal = () => {
+        setIsRoom2Open(false);
+        document.body.style.overflow = 'unset';
+    };
     const openRoom1Modal = () => {
         setIsRoom1Open(true);
         document.body.style.overflow = 'hidden'; // Prevent background scroll
@@ -364,9 +376,12 @@ export default function Home() {
 
                         {/* Room 2 */}
                         <div className="room-card">
-                            <div className="room-image">
+                            <div className="room-image" onClick={openRoom2Modal} style={{ cursor: 'pointer' }}>
                                 <img src="https://www.choicehotels.com/hoteldam/ar/ar352/images/1280/AR352Exterior3.jpg?webp=true" alt="2 Queen Beds Room" />
                                 <span className="room-count">3</span>
+                                <div className="image-overlay">
+                                    <span className="view-photos">View Details</span>
+                                </div>
                             </div>
 
                             <div className="room-details">
@@ -391,7 +406,7 @@ export default function Home() {
                                     </div>
                                 </div>
 
-                                <button className="room-details-btn">Room Details</button>
+                                <button className="room-details-btn" onClick={openRoom2Modal}>Room Details</button>
                             </div>
 
                             <div className="room-pricing">
@@ -404,6 +419,8 @@ export default function Home() {
                                 <button className="book-room-btn">View rates</button>
                             </div>
                         </div>
+                        {/* Room2 Modal */}
+                        <Room2 isOpen={isRoom2Open} onClose={closeRoom2Modal} />
 
                         {/* Room 3 */}
                         <div className="room-card">
