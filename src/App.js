@@ -3,7 +3,7 @@ import Header from "./components/header";
 import Home from "./pages/home";
 import Gallery from "./pages/gallery"; 
 import Aminities from "./pages/aminities";
-
+import Room1 from "./pages/room1";
 function App() {
   return (
     <BrowserRouter>
@@ -16,6 +16,7 @@ function App() {
            <Route path="/resorts" element={<h1>Resorts</h1>} />
            <Route path="/gallery" element={<Gallery />} /> 
            <Route path="/aminities" element={<Aminities />} /> 
+        <Route path="/room1" element={<Room1 />} /> 
          </Routes>
 
       
