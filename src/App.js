@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Footer from "./components/footer";
 import Header from "./components/header";
 import Home from "./pages/home";
 import Gallery from "./pages/gallery"; 
@@ -18,7 +17,7 @@ function App() {
            <Route path="/aminities" element={<Aminities />} /> 
          </Routes>
 
-      <Footer />
+      
     </BrowserRouter>
   );
 }
