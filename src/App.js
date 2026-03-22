@@ -3,6 +3,7 @@ import Header from "./components/header";
 import Home from "./pages/home";
 import Gallery from "./pages/gallery"; 
 import Aminities from "./pages/aminities";
+
 function App() {
   return (
     <BrowserRouter>

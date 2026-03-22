@@ -2,12 +2,28 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./home.css";
 import Amenities from "./aminities.jsx";
+import Room1 from './room1.jsx'; // Import Room1 component
 
 export default function Home() {
     const [showDesktopDropdown, setShowDesktopDropdown] = useState(false);
     const [showMobileNavigation, setShowMobileNavigation] = useState(false);
     const [showMobileSubmenu, setShowMobileSubmenu] = useState(false);
     const [activeSection, setActiveSection] = useState("overview");
+    const [showAmenitiesModal, setShowAmenitiesModal] = useState(false);
+
+    // Room1 Modal States - MOVED TO TOP LEVEL
+    const [isRoom1Open, setIsRoom1Open] = useState(false);
+
+    const openRoom1Modal = () => {
+        setIsRoom1Open(true);
+        document.body.style.overflow = 'hidden'; // Prevent background scroll
+    };
+
+    const closeRoom1Modal = () => {
+        setIsRoom1Open(false);
+        document.body.style.overflow = 'unset'; // Restore scroll
+    };
+
     const navigate = useNavigate();
 
     // Close mobile navigation on window resize
@@ -70,8 +86,6 @@ export default function Home() {
         handleScroll();
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
-
-    const [showAmenitiesModal, setShowAmenitiesModal] = useState(false);
 
     const toggleDesktopDropdown = () => {
         setShowDesktopDropdown(!showDesktopDropdown);
@@ -302,10 +316,14 @@ export default function Home() {
                     </div>
 
                     <div className="rooms-grid">
+                        {/* Room 1 - With Modal */}
                         <div className="room-card">
-                            <div className="room-image">
+                            <div className="room-image" onClick={openRoom1Modal} style={{ cursor: 'pointer' }}>
                                 <img src="https://www.choicehotels.com/hoteldam/ar/ar352/images/1280/AR352NQQ1.jpg?webp=true" alt="1 King Bed Room" />
                                 <span className="room-count">5</span>
+                                <div className="image-overlay">
+                                    <span className="view-photos">View Details</span>
+                                </div>
                             </div>
 
                             <div className="room-details">
@@ -330,7 +348,7 @@ export default function Home() {
                                     </div>
                                 </div>
 
-                                <button className="room-details-btn">Room Details</button>
+                                <button className="room-details-btn" onClick={openRoom1Modal}>Room Details</button>
                             </div>
 
                             <div className="room-pricing">
@@ -344,6 +362,7 @@ export default function Home() {
                             </div>
                         </div>
 
+                        {/* Room 2 */}
                         <div className="room-card">
                             <div className="room-image">
                                 <img src="https://www.choicehotels.com/hoteldam/ar/ar352/images/1280/AR352Exterior3.jpg?webp=true" alt="2 Queen Beds Room" />
@@ -386,6 +405,7 @@ export default function Home() {
                             </div>
                         </div>
 
+                        {/* Room 3 */}
                         <div className="room-card">
                             <div className="room-image">
                                 <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1200&q=80" alt="1 King Bed Suite" />
@@ -430,6 +450,8 @@ export default function Home() {
                     </div>
                 </div>
 
+                {/* Room1 Modal */}
+                <Room1 isOpen={isRoom1Open} onClose={closeRoom1Modal} />
                 {/* ============================ */}
                 <div className="amenities-section" id="amenities">
                     <div className="amenities-left">
@@ -513,7 +535,7 @@ export default function Home() {
                         <p><b>1200 Truman Baker Drive, Searcy, AR, 72143, US</b></p>
 
                         <p>
-                            Our hotel in Searcy, AR, is located off I-57 next to restaurants, shops and attractions. Harding University and Arkansas State University Beebe, Searcy Campus are both accessible within minutes, while Searcy Regional Airport is under five miles away. You can enjoy scenic activities at Riverside Park along the Little Red River or immerse yourself in interactive history at Pioneer Village. If you’re traveling with a team, Searcy Sports Complex is just three miles from our hotel. Searcy is also home to a variety of businesses and companies, making us an ideal destination for professional travelers. Everything you need for a successful stay is within reach.
+                            Our hotel in Searcy, AR, is located off I-57 next to restaurants, shops and attractions. Harding University and Arkansas State University Beebe, Searcy Campus are both accessible within minutes, while Searcy Regional Airport is under five miles away. You can enjoy scenic activities at Riverside Park along the Little Red River or immerse yourself in interactive history at Pioneer Village. If you're traveling with a team, Searcy Sports Complex is just three miles from our hotel. Searcy is also home to a variety of businesses and companies, making us an ideal destination for professional travelers. Everything you need for a successful stay is within reach.
                         </p>
                     </div>
 
@@ -746,22 +768,22 @@ export default function Home() {
 
                             <div className="review-footer">
                                 <div>
-                                    <p className="name">Abner, Robert</p>
-                                    <p className="date">March 2026</p>
+                                    <p className="name">Smith, John</p>
+                                    <p className="date">February 2026</p>
                                 </div>
                                 <span className="verified">Verified</span>
                             </div>
                         </div>
 
                         <div className="review-card">
-                            <p className="stars">⭐⭐⭐⭐⭐ <span>5/5</span></p>
-                            <h4>Nice and quiet</h4>
-                            <p>Room very clean and comfortable bed.</p>
+                            <p className="stars">⭐⭐⭐⭐ <span>4/5</span></p>
+                            <h4>Good value for money</h4>
+                            <p>Clean rooms, friendly staff, good breakfast. Would stay again.</p>
 
                             <div className="review-footer">
                                 <div>
-                                    <p className="name">Baker, Susan</p>
-                                    <p className="date">March 2026</p>
+                                    <p className="name">Johnson, Mary</p>
+                                    <p className="date">January 2026</p>
                                 </div>
                                 <span className="verified">Verified</span>
                             </div>
@@ -771,64 +793,50 @@ export default function Home() {
 
                 {/* ============================ */}
                 <div className="contact-section" id="contact">
-                    <div className="contact-header">
-                        <p className="tag">CONTACT US</p>
-                        <h2>Get in Touch</h2>
-                        <p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
-                    </div>
+                    <p className="tag">CONTACT US</p>
+                    <h2>Get in touch</h2>
 
-                    <div className="contact-content">
-                        <div className="contact-info">
-                            <div className="contact-item">
-                                <span className="contact-icon">📞</span>
-                                <div>
-                                    <h4>Phone</h4>
-                                    <p>(501) 254-0074</p>
-                                    <small>Available 24/7</small>
-                                </div>
-                            </div>
-
-                            <div className="contact-item">
-                                <span className="contact-icon">✉️</span>
-                                <div>
-                                    <h4>Email</h4>
-                                    <p>info@sleepinn.com</p>
-                                    <small>We'll reply within 24 hours</small>
-                                </div>
-                            </div>
-
-                            <div className="contact-item">
-                                <span className="contact-icon">📍</span>
-                                <div>
-                                    <h4>Address</h4>
-                                    <p>1200 Truman Baker Drive</p>
-                                    <small>Searcy, AR 72143, US</small>
-                                </div>
+                    <div className="contact-grid">
+                        <div className="contact-item">
+                            <div className="contact-icon">📞</div>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>(501) 254-0074</p>
                             </div>
                         </div>
 
-                        <div className="contact-form">
-                            <form>
-                                <div className="form-row">
-                                    <input type="text" placeholder="Your Name" required />
-                                    <input type="email" placeholder="Your Email" required />
-                                </div>
-                                
-                                <input type="text" placeholder="Subject" required />
-                                
-                                <textarea placeholder="Your Message" rows="5" required></textarea>
-                                
-                                <button type="submit" className="submit-btn">Send Message</button>
-                            </form>
+                        <div className="contact-item">
+                            <div className="contact-icon">📧</div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>info@sleepinnsearcy.com</p>
+                            </div>
+                        </div>
+
+                        <div className="contact-item">
+                            <div className="contact-icon">📍</div>
+                            <div>
+                                <h4>Address</h4>
+                                <p>1200 Truman Baker Drive<br />Searcy, AR 72143, US</p>
+                            </div>
+                        </div>
+
+                        <div className="contact-item">
+                            <div className="contact-icon">🕐</div>
+                            <div>
+                                <h4>Front Desk</h4>
+                                <p>24/7 Available</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <Amenities
-                    isOpen={showAmenitiesModal}
-                    onClose={() => setShowAmenitiesModal(false)}
-                />
             </section>
+
+            {/* Amenities Modal */}
+            {showAmenitiesModal && (
+                <Amenities onClose={() => setShowAmenitiesModal(false)} />
+            )}
         </>
     );
 }
