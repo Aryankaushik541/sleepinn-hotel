@@ -1,5 +1,5 @@
 import React from 'react';
-import './Room1.css';
+import './room1.css';
 
 const Room1 = ({ isOpen, onClose }) => {
     if (!isOpen) return null;
