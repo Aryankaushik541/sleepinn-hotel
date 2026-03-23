@@ -4,6 +4,8 @@ import Home from "./pages/home";
 import Gallery from "./pages/gallery"; 
 import Aminities from "./pages/aminities";
 import Room1 from "./pages/room1";
+import Room2 from "./pages/room2";
+import Room3 from "./pages/room3";
 function App() {
   return (
     <BrowserRouter>
@@ -17,6 +19,8 @@ function App() {
            <Route path="/gallery" element={<Gallery />} /> 
            <Route path="/aminities" element={<Aminities />} /> 
         <Route path="/room1" element={<Room1 />} /> 
+        <Route path="/room2" element={<Room2 />} /> 
+        <Route path="/room3" element={<Room3 />} /> 
          </Routes>
 
       
