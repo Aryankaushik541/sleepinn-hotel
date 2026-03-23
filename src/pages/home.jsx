@@ -810,43 +810,63 @@ export default function Home() {
 
                 {/* ============================ */}
                 <div className="contact-section" id="contact">
-                    <p className="tag">CONTACT US</p>
-                    <h2>Get in touch</h2>
+                    <div className="contact-header">
+                        <p className="tag">CONTACT US</p>
+                        <h2>Get in Touch</h2>
+                        <p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+                    </div>
 
-                    <div className="contact-grid">
-                        <div className="contact-item">
-                            <div className="contact-icon">📞</div>
-                            <div>
-                                <h4>Phone</h4>
-                                <p>(501) 254-0074</p>
+                    <div className="contact-content">
+                        <div className="contact-info">
+                            <div className="contact-item">
+                                <span className="contact-icon">📞</span>
+                                <div>
+                                    <h4>Phone</h4>
+                                    <p>(501) 254-0074</p>
+                                    <small>Available 24/7</small>
+                                </div>
+                            </div>
+
+                            <div className="contact-item">
+                                <span className="contact-icon">✉️</span>
+                                <div>
+                                    <h4>Email</h4>
+                                    <p>info@sleepinn.com</p>
+                                    <small>We'll reply within 24 hours</small>
+                                </div>
+                            </div>
+
+                            <div className="contact-item">
+                                <span className="contact-icon">📍</span>
+                                <div>
+                                    <h4>Address</h4>
+                                    <p>1200 Truman Baker Drive</p>
+                                    <small>Searcy, AR 72143, US</small>
+                                </div>
                             </div>
                         </div>
 
-                        <div className="contact-item">
-                            <div className="contact-icon">📧</div>
-                            <div>
-                                <h4>Email</h4>
-                                <p>info@sleepinnsearcy.com</p>
-                            </div>
-                        </div>
+                        <div className="contact-form">
+                            <form>
+                                <div className="form-row">
+                                    <input type="text" placeholder="Your Name" required />
+                                    <input type="email" placeholder="Your Email" required />
+                                </div>
 
-                        <div className="contact-item">
-                            <div className="contact-icon">📍</div>
-                            <div>
-                                <h4>Address</h4>
-                                <p>1200 Truman Baker Drive<br />Searcy, AR 72143, US</p>
-                            </div>
-                        </div>
+                                <input type="text" placeholder="Subject" required />
 
-                        <div className="contact-item">
-                            <div className="contact-icon">🕐</div>
-                            <div>
-                                <h4>Front Desk</h4>
-                                <p>24/7 Available</p>
-                            </div>
+                                <textarea placeholder="Your Message" rows="5" required></textarea>
+
+                                <button type="submit" className="submit-btn">Send Message</button>
+                            </form>
                         </div>
                     </div>
                 </div>
+
+                <Amenities
+                    isOpen={showAmenitiesModal}
+                    onClose={() => setShowAmenitiesModal(false)}
+                />
 
             </section>
 

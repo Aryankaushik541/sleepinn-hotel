@@ -7,7 +7,6 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    
 }
 
 .hotel-header-container {
@@ -15,7 +14,8 @@
     margin: 0 auto;
     display: flex;
     align-items: center;
-    padding: 0 20px;
+    justify-content: space-between;
+    padding: 15px 25px;
     gap: 24px;
 }
 
@@ -37,6 +37,11 @@
 .hotel-main-info {
     flex: 1;
     min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .hotel-new-badge {
@@ -68,8 +73,11 @@
 .hotel-rating-location-phone {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 16px;
     flex-wrap: wrap;
+    font-size: 14px;
+    color: #555;
 }
 
 .hotel-rating {
@@ -193,38 +201,86 @@
     transform: translateY(0);
 }
 
-/* Mobile Responsive */
+/* Mobile Responsive - Exactly like the image */
 @media (max-width: 768px) {
     .hotel-header-container {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        gap: 16px;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        grid-template-rows: auto auto;
+        gap: 12px 16px;
+        align-items: start;
         padding: 16px 20px;
     }
 
+    /* Logo - Top Left */
     .hotel-logo-section {
-        flex-shrink: 0;
-        padding: 8px;
+        grid-column: 1;
+        grid-row: 1;
+        padding: 0;
         border: none;
         background: transparent;
         box-shadow: none;
+        align-self: start;
     }
 
     .hotel-logo img {
         height: 40px;
-        width: auto;
     }
 
-    .hotel-main-info {
-        flex: 1;
-        min-width: 0;
-    }
-
+    /* Badge - Top Center */
     .hotel-new-badge {
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: start;
+        align-self: start;
         font-size: 10px;
         padding: 3px 6px;
-        margin-bottom: 6px;
+        margin: 0;
+    }
+
+    /* Price - Top Right */
+    .hotel-pricing-section {
+        grid-column: 3;
+        grid-row: 1;
+        align-items: flex-end;
+        text-align: right;
+        gap: 4px;
+    }
+
+    .hotel-price-line {
+        justify-content: flex-end;
+        margin-bottom: 2px;
+    }
+
+    .hotel-original-price {
+        font-size: 14px;
+    }
+
+    .hotel-current-price {
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    .hotel-per-night {
+        font-size: 12px;
+    }
+
+    .hotel-member-rate {
+        font-size: 11px;
+        margin-bottom: 1px;
+    }
+
+    .hotel-total {
+        font-size: 11px;
+    }
+
+    /* Main Info - Bottom Row (spans all columns) */
+    .hotel-main-info {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        align-items: flex-start;
+        text-align: left;
+        margin-top: 8px;
     }
 
     .hotel-title {
@@ -235,10 +291,9 @@
     }
 
     .hotel-rating-location-phone {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 6px;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 8px 16px;
     }
 
     .hotel-rating {
@@ -261,18 +316,24 @@
     .hotel-location,
     .hotel-phone {
         font-size: 12px;
-        gap: 4px;
     }
 
-    .hotel-pricing-section {
-        display: none;
+    /* View Rooms Button - Below everything */
+    .hotel-view-rooms-btn {
+        grid-column: 1 / -1;
+        grid-row: 3;
+        width: 100%;
+        margin-top: 12px;
+        padding: 14px 24px;
+        font-size: 14px;
+        font-weight: 600;
     }
 }
 
 @media (max-width: 480px) {
     .hotel-header-container {
         padding: 12px 16px;
-        gap: 12px;
+        gap: 10px 12px;
     }
 
     .hotel-logo img {
@@ -283,12 +344,17 @@
         font-size: 16px;
     }
 
-    .hotel-rating-location-phone {
-        gap: 4px;
+    .hotel-current-price {
+        font-size: 18px;
     }
 
     .hotel-location,
     .hotel-phone {
         font-size: 11px;
+    }
+
+    .hotel-view-rooms-btn {
+        padding: 12px 20px;
+        font-size: 13px;
     }
 }
