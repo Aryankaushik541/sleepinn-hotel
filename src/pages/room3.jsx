@@ -5,10 +5,10 @@ const Room3 = ({ isOpen, onClose }) => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     const images = [
-        "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80",
         "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1200&q=80"
+        "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?auto=format&fit=crop&w=1200&q=80"
     ];
 
     if (!isOpen) return null;
@@ -21,11 +21,35 @@ const Room3 = ({ isOpen, onClose }) => {
         setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
     };
 
+    const handleKeyDown = (e) => {
+        if (e.key === 'Escape') {
+            onClose();
+        }
+        if (e.key === 'ArrowLeft') {
+            prevImage();
+        }
+        if (e.key === 'ArrowRight') {
+            nextImage();
+        }
+    };
+
     return (
-        <div className="room3-modal-overlay" onClick={onClose}>
+        <div
+            className="room3-modal-overlay"
+            onClick={onClose}
+            onKeyDown={handleKeyDown}
+            tabIndex={0}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="room3-title"
+        >
             <div className="room3-modal" onClick={(e) => e.stopPropagation()}>
                 {/* Close Button */}
-                <button className="room3-close-btn" onClick={onClose}>
+                <button
+                    className="room3-close-btn"
+                    onClick={onClose}
+                    aria-label="Close modal"
+                >
                     <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -33,11 +57,11 @@ const Room3 = ({ isOpen, onClose }) => {
 
                 {/* Header */}
                 <div className="room3-header">
-                    <h2>1 King Bed Suite, Nonsmoking</h2>
+                    <h2 id="room3-title">Deluxe Suite with Jacuzzi</h2>
                     <div className="room3-specs">
                         <span>🛏️ 1 King Bed</span>
-                        <span>👥 No Smoking</span>
-                        <span>📐 350 sq ft</span>
+                        <span>🛁 Private Jacuzzi</span>
+                        <span>📐 550 sq ft</span>
                     </div>
                 </div>
 
@@ -46,9 +70,24 @@ const Room3 = ({ isOpen, onClose }) => {
                     {/* Image Gallery */}
                     <div className="room3-image-section">
                         <div className="room3-main-image">
-                            <img src={images[currentImageIndex]} alt="1 King Bed Suite" />
-                            <button className="room3-nav-btn room3-prev" onClick={prevImage}>‹</button>
-                            <button className="room3-nav-btn room3-next" onClick={nextImage}>›</button>
+                            <img
+                                src={images[currentImageIndex]}
+                                alt={`Deluxe Suite with Jacuzzi - View ${currentImageIndex + 1}`}
+                            />
+                            <button
+                                className="room3-nav-btn room3-prev"
+                                onClick={prevImage}
+                                aria-label="Previous image"
+                            >
+                                ‹
+                            </button>
+                            <button
+                                className="room3-nav-btn room3-next"
+                                onClick={nextImage}
+                                aria-label="Next image"
+                            >
+                                ›
+                            </button>
                             <div className="room3-image-counter">
                                 {currentImageIndex + 1} / {images.length}
                             </div>
@@ -59,9 +98,12 @@ const Room3 = ({ isOpen, onClose }) => {
                                 <img
                                     key={index}
                                     src={image}
-                                    alt={`Room view ${index + 1}`}
+                                    alt={`Deluxe suite view ${index + 1}`}
                                     className={currentImageIndex === index ? 'active' : ''}
                                     onClick={() => setCurrentImageIndex(index)}
+                                    role="button"
+                                    tabIndex={0}
+                                    onKeyDown={(e) => e.key === 'Enter' && setCurrentImageIndex(index)}
                                 />
                             ))}
                         </div>
@@ -70,8 +112,8 @@ const Room3 = ({ isOpen, onClose }) => {
                     {/* Room Info */}
                     <div className="room3-info-section">
                         <div className="room3-room-overview">
-                            <h3>Suite Overview</h3>
-                            <p>Experience luxury in our spacious king bed suite featuring a separate living area with sofa bed. Perfect for families or extended stays with modern amenities and a relaxing atmosphere.</p>
+                            <h3>Luxury Deluxe Suite</h3>
+                            <p>Indulge in ultimate luxury with our premium deluxe suite featuring a private jacuzzi, spa amenities, and elegant furnishings. Perfect for honeymooners and those seeking an unforgettable romantic getaway with world-class comfort.</p>
                         </div>
 
                         {/* Room Features */}
@@ -83,7 +125,7 @@ const Room3 = ({ isOpen, onClose }) => {
                                     </svg>
                                 </div>
                                 <div className="room3-feature-text">
-                                    <span>4 Guests Maximum</span>
+                                    <span>2 Guests Maximum</span>
                                 </div>
                             </div>
 
@@ -94,7 +136,7 @@ const Room3 = ({ isOpen, onClose }) => {
                                     </svg>
                                 </div>
                                 <div className="room3-feature-text">
-                                    <span>100% Non-Smoking</span>
+                                    <span>Spa & Wellness</span>
                                 </div>
                             </div>
 
@@ -105,17 +147,17 @@ const Room3 = ({ isOpen, onClose }) => {
                                     </svg>
                                 </div>
                                 <div className="room3-feature-text">
-                                    <span>350 sq ft</span>
+                                    <span>550 sq ft</span>
                                 </div>
                             </div>
                         </div>
 
                         {/* Amenities Section */}
                         <div className="room3-amenities">
-                            <h4>Suite Amenities</h4>
+                            <h4>Premium Suite Amenities</h4>
 
                             <div className="room3-amenities-category">
-                                <h5>🛏️ Bedroom</h5>
+                                <h5>🛏️ Master Bedroom</h5>
                                 <div className="room3-amenities-grid">
                                     <div className="room3-amenity-item">
                                         <div className="room3-amenity-icon">✓</div>
@@ -123,125 +165,147 @@ const Room3 = ({ isOpen, onClose }) => {
                                     </div>
                                     <div className="room3-amenity-item">
                                         <div className="room3-amenity-icon">✓</div>
-                                        <span>Sofa Bed</span>
+                                        <span>Egyptian Cotton Sheets</span>
                                     </div>
                                     <div className="room3-amenity-item">
                                         <div className="room3-amenity-icon">✓</div>
-                                        <span>Premium Bedding</span>
+                                        <span>Memory Foam Pillows</span>
                                     </div>
                                     <div className="room3-amenity-item">
                                         <div className="room3-amenity-icon">✓</div>
-                                        <span>Blackout Curtains</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="room3-amenities-category">
-                                <h5>📺 Entertainment</h5>
-                                <div className="room3-amenities-grid">
-                                    <div className="room3-amenity-item">
-                                        <div className="room3-amenity-icon">✓</div>
-                                        <span>55-Inch TV with Soundbar</span>
-                                    </div>
-                                    <div className="room3-amenity-item">
-                                        <div className="room3-amenity-icon">✓</div>
-                                        <span>Cable/Satellite Channels</span>
-                                    </div>
-                                    <div className="room3-amenity-item">
-                                        <div className="room3-amenity-icon">✓</div>
-                                        <span>Wireless Streaming Service</span>
-                                    </div>
-                                    <div className="room3-amenity-item">
-                                        <div className="room3-amenity-icon">✓</div>
-                                        <span>Free WiFi</span>
+                                        <span>Smart Temperature Control</span>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="room3-amenities-category">
-                                <h5>🍽️ Kitchen & Dining</h5>
+                                <h5>🛁 Spa & Jacuzzi</h5>
                                 <div className="room3-amenities-grid">
                                     <div className="room3-amenity-item">
                                         <div className="room3-amenity-icon">✓</div>
-                                        <span>Microwave</span>
+                                        <span>Private Jacuzzi Tub</span>
                                     </div>
                                     <div className="room3-amenity-item">
                                         <div className="room3-amenity-icon">✓</div>
-                                        <span>Mini Refrigerator</span>
+                                        <span>Rainfall Shower</span>
                                     </div>
                                     <div className="room3-amenity-item">
                                         <div className="room3-amenity-icon">✓</div>
-                                        <span>Coffee Maker</span>
+                                        <span>Spa Robes & Slippers</span>
                                     </div>
                                     <div className="room3-amenity-item">
                                         <div className="room3-amenity-icon">✓</div>
-                                        <span>Complimentary Coffee</span>
+                                        <span>Aromatherapy Diffuser</span>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="room3-amenities-category">
-                                <h5>🚿 Bathroom</h5>
+                                <h5>📺 Entertainment & Tech</h5>
                                 <div className="room3-amenities-grid">
                                     <div className="room3-amenity-item">
                                         <div className="room3-amenity-icon">✓</div>
-                                        <span>Private Bathroom</span>
+                                        <span>75-Inch 4K Smart TV</span>
                                     </div>
                                     <div className="room3-amenity-item">
                                         <div className="room3-amenity-icon">✓</div>
-                                        <span>Shower/Tub Combination</span>
+                                        <span>Surround Sound System</span>
                                     </div>
                                     <div className="room3-amenity-item">
                                         <div className="room3-amenity-icon">✓</div>
-                                        <span>Hair Dryer</span>
+                                        <span>All Streaming Services</span>
                                     </div>
                                     <div className="room3-amenity-item">
                                         <div className="room3-amenity-icon">✓</div>
-                                        <span>Complimentary Toiletries</span>
+                                        <span>Ultra-Fast WiFi 6</span>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="room3-amenities-category">
-                                <h5>💼 Work Space</h5>
+                                <h5>🍽️ Gourmet Kitchen</h5>
                                 <div className="room3-amenities-grid">
                                     <div className="room3-amenity-item">
                                         <div className="room3-amenity-icon">✓</div>
-                                        <span>Desk with Electrical Outlet</span>
+                                        <span>Full Kitchen</span>
                                     </div>
                                     <div className="room3-amenity-item">
                                         <div className="room3-amenity-icon">✓</div>
-                                        <span>Ergonomic Chair</span>
+                                        <span>Stainless Steel Appliances</span>
                                     </div>
                                     <div className="room3-amenity-item">
                                         <div className="room3-amenity-icon">✓</div>
-                                        <span>High-Speed Internet</span>
+                                        <span>Wine Cooler</span>
                                     </div>
                                     <div className="room3-amenity-item">
                                         <div className="room3-amenity-icon">✓</div>
-                                        <span>Phone with Voicemail</span>
+                                        <span>Gourmet Coffee Bar</span>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="room3-amenities-category">
-                                <h5>🛡️ Additional Services</h5>
+                                <h5>🚿 Luxury Bathroom</h5>
                                 <div className="room3-amenities-grid">
                                     <div className="room3-amenity-item">
                                         <div className="room3-amenity-icon">✓</div>
-                                        <span>Iron and Ironing Board</span>
+                                        <span>Marble & Stone Finishes</span>
                                     </div>
                                     <div className="room3-amenity-item">
                                         <div className="room3-amenity-icon">✓</div>
-                                        <span>Electronic Door Locks</span>
+                                        <span>Heated Towel Racks</span>
                                     </div>
                                     <div className="room3-amenity-item">
                                         <div className="room3-amenity-icon">✓</div>
-                                        <span>Daily Housekeeping</span>
+                                        <span>Premium Hair Dryer</span>
                                     </div>
                                     <div className="room3-amenity-item">
                                         <div className="room3-amenity-icon">✓</div>
-                                        <span>24/7 Front Desk</span>
+                                        <span>Luxury Toiletries</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="room3-amenities-category">
+                                <h5>💼 Work & Living Space</h5>
+                                <div className="room3-amenities-grid">
+                                    <div className="room3-amenity-item">
+                                        <div className="room3-amenity-icon">✓</div>
+                                        <span>Executive Workspace</span>
+                                    </div>
+                                    <div className="room3-amenity-item">
+                                        <div className="room3-amenity-icon">✓</div>
+                                        <span>Lounge Area with Sofa</span>
+                                    </div>
+                                    <div className="room3-amenity-item">
+                                        <div className="room3-amenity-icon">✓</div>
+                                        <span>Dining Table for 2</span>
+                                    </div>
+                                    <div className="room3-amenity-item">
+                                        <div className="room3-amenity-icon">✓</div>
+                                        <span>Premium Sound System</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="room3-amenities-category">
+                                <h5>🌟 Exclusive Services</h5>
+                                <div className="room3-amenities-grid">
+                                    <div className="room3-amenity-item">
+                                        <div className="room3-amenity-icon">✓</div>
+                                        <span>Personal Concierge</span>
+                                    </div>
+                                    <div className="room3-amenity-item">
+                                        <div className="room3-amenity-icon">✓</div>
+                                        <span>In-Room Spa Services</span>
+                                    </div>
+                                    <div className="room3-amenity-item">
+                                        <div className="room3-amenity-icon">✓</div>
+                                        <span>Private Chef Available</span>
+                                    </div>
+                                    <div className="room3-amenity-item">
+                                        <div className="room3-amenity-icon">✓</div>
+                                        <span>Champagne & Chocolates</span>
                                     </div>
                                 </div>
                             </div>
@@ -252,16 +316,16 @@ const Room3 = ({ isOpen, onClose }) => {
                             <h4>♿ Accessibility Features</h4>
                             <div className="room3-accessibility-list">
                                 <div className="room3-accessibility-item">
-                                    <span>• Accessible bathroom with grab bars</span>
+                                    <span>• Wheelchair accessible suite</span>
                                 </div>
                                 <div className="room3-accessibility-item">
-                                    <span>• Roll-in shower available upon request</span>
+                                    <span>• Accessible jacuzzi with grab bars</span>
                                 </div>
                                 <div className="room3-accessibility-item">
-                                    <span>• Lowered closet rods and shelves</span>
+                                    <span>• Accessible bathroom with roll-in shower</span>
                                 </div>
                                 <div className="room3-accessibility-item">
-                                    <span>• Visual notification devices</span>
+                                    <span>• Hearing loop system available</span>
                                 </div>
                             </div>
                         </div>
@@ -272,13 +336,13 @@ const Room3 = ({ isOpen, onClose }) => {
                                 <div className="room3-price-display">
                                     <span className="room3-price-label">Starting from</span>
                                     <div className="room3-price-main">
-                                        <span className="room3-original-price">$125</span>
-                                        <span className="room3-current-price">$112</span>
+                                        <span className="room3-original-price">$299</span>
+                                        <span className="room3-current-price">$249</span>
                                     </div>
                                     <span className="room3-price-period">USD per night</span>
                                 </div>
                                 <div className="room3-price-details">
-                                    <p className="room3-member-rate">✨ Member Rate - Save 10%</p>
+                                    <p className="room3-member-rate">✨ Luxury Suite Special - Save 17%</p>
                                     <p className="room3-price-note">*Excludes taxes and fees</p>
                                 </div>
                             </div>

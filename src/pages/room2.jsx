@@ -5,10 +5,10 @@ const Room2 = ({ isOpen, onClose }) => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     const images = [
-        "https://www.choicehotels.com/hoteldam/ar/ar352/images/1280/AR352NQQ2.jpg?webp=true",
-        "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1200&q=80"
+        "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80"
     ];
 
     if (!isOpen) return null;
@@ -33,11 +33,11 @@ const Room2 = ({ isOpen, onClose }) => {
 
                 {/* Header */}
                 <div className="room2-header">
-                    <h2>2 Double Beds, Nonsmoking</h2>
+                    <h2>2 Queen Beds, Nonsmoking</h2>
                     <div className="room2-specs">
-                        <span>🛏️ 2 Double Beds</span>
+                        <span>🛏️ 2 Queen Beds</span>
                         <span>👥 No Smoking</span>
-                        <span>📐 320 sq ft</span>
+                        <span>📐 350 sq ft</span>
                     </div>
                 </div>
 
@@ -46,7 +46,7 @@ const Room2 = ({ isOpen, onClose }) => {
                     {/* Image Gallery */}
                     <div className="room2-image-section">
                         <div className="room2-main-image">
-                            <img src={images[currentImageIndex]} alt="2 Double Beds Room" />
+                            <img src={images[currentImageIndex]} alt="2 Queen Beds Room" />
                             <button className="room2-nav-btn room2-prev" onClick={prevImage}>‹</button>
                             <button className="room2-nav-btn room2-next" onClick={nextImage}>›</button>
                             <div className="room2-image-counter">
@@ -71,7 +71,7 @@ const Room2 = ({ isOpen, onClose }) => {
                     <div className="room2-info-section">
                         <div className="room2-room-overview">
                             <h3>Room Overview</h3>
-                            <p>Spacious room with two double beds, ideal for families or groups. Equipped with all modern conveniences for a comfortable stay with plenty of space to relax.</p>
+                            <p>Spacious room with two comfortable queen beds, perfect for families or groups. Features modern amenities and plenty of space to relax and unwind during your stay.</p>
                         </div>
 
                         {/* Room Features */}
@@ -105,7 +105,7 @@ const Room2 = ({ isOpen, onClose }) => {
                                     </svg>
                                 </div>
                                 <div className="room2-feature-text">
-                                    <span>320 sq ft</span>
+                                    <span>350 sq ft</span>
                                 </div>
                             </div>
                         </div>
@@ -119,7 +119,7 @@ const Room2 = ({ isOpen, onClose }) => {
                                 <div className="room2-amenities-grid">
                                     <div className="room2-amenity-item">
                                         <div className="room2-amenity-icon">✓</div>
-                                        <span>2 Double Beds</span>
+                                        <span>2 Queen Beds</span>
                                     </div>
                                     <div className="room2-amenity-item">
                                         <div className="room2-amenity-icon">✓</div>
@@ -131,7 +131,7 @@ const Room2 = ({ isOpen, onClose }) => {
                                     </div>
                                     <div className="room2-amenity-item">
                                         <div className="room2-amenity-icon">✓</div>
-                                        <span>Extra Pillows & Blankets</span>
+                                        <span>Climate Control</span>
                                     </div>
                                 </div>
                             </div>
@@ -141,19 +141,19 @@ const Room2 = ({ isOpen, onClose }) => {
                                 <div className="room2-amenities-grid">
                                     <div className="room2-amenity-item">
                                         <div className="room2-amenity-icon">✓</div>
-                                        <span>50-Inch TV</span>
+                                        <span>65-Inch TV with Soundbar</span>
                                     </div>
                                     <div className="room2-amenity-item">
                                         <div className="room2-amenity-icon">✓</div>
-                                        <span>Cable Channels</span>
+                                        <span>Cable/Satellite Channels</span>
+                                    </div>
+                                    <div className="room2-amenity-item">
+                                        <div className="room2-amenity-icon">✓</div>
+                                        <span>Wireless Streaming Service</span>
                                     </div>
                                     <div className="room2-amenity-item">
                                         <div className="room2-amenity-icon">✓</div>
                                         <span>Free WiFi</span>
-                                    </div>
-                                    <div className="room2-amenity-item">
-                                        <div className="room2-amenity-icon">✓</div>
-                                        <span>Streaming Services</span>
                                     </div>
                                 </div>
                             </div>
@@ -163,15 +163,15 @@ const Room2 = ({ isOpen, onClose }) => {
                                 <div className="room2-amenities-grid">
                                     <div className="room2-amenity-item">
                                         <div className="room2-amenity-icon">✓</div>
+                                        <span>Microwave</span>
+                                    </div>
+                                    <div className="room2-amenity-item">
+                                        <div className="room2-amenity-icon">✓</div>
                                         <span>Mini Refrigerator</span>
                                     </div>
                                     <div className="room2-amenity-item">
                                         <div className="room2-amenity-icon">✓</div>
                                         <span>Coffee Maker</span>
-                                    </div>
-                                    <div className="room2-amenity-item">
-                                        <div className="room2-amenity-icon">✓</div>
-                                        <span>Microwave</span>
                                     </div>
                                     <div className="room2-amenity-item">
                                         <div className="room2-amenity-icon">✓</div>
@@ -189,7 +189,7 @@ const Room2 = ({ isOpen, onClose }) => {
                                     </div>
                                     <div className="room2-amenity-item">
                                         <div className="room2-amenity-icon">✓</div>
-                                        <span>Shower/Tub</span>
+                                        <span>Shower/Tub Combination</span>
                                     </div>
                                     <div className="room2-amenity-item">
                                         <div className="room2-amenity-icon">✓</div>
@@ -207,11 +207,11 @@ const Room2 = ({ isOpen, onClose }) => {
                                 <div className="room2-amenities-grid">
                                     <div className="room2-amenity-item">
                                         <div className="room2-amenity-icon">✓</div>
-                                        <span>Desk with Outlet</span>
+                                        <span>Desk with Electrical Outlet</span>
                                     </div>
                                     <div className="room2-amenity-item">
                                         <div className="room2-amenity-icon">✓</div>
-                                        <span>Chair</span>
+                                        <span>Ergonomic Chair</span>
                                     </div>
                                     <div className="room2-amenity-item">
                                         <div className="room2-amenity-icon">✓</div>
@@ -229,11 +229,11 @@ const Room2 = ({ isOpen, onClose }) => {
                                 <div className="room2-amenities-grid">
                                     <div className="room2-amenity-item">
                                         <div className="room2-amenity-icon">✓</div>
-                                        <span>Iron and Board</span>
+                                        <span>Iron and Ironing Board</span>
                                     </div>
                                     <div className="room2-amenity-item">
                                         <div className="room2-amenity-icon">✓</div>
-                                        <span>Electronic Locks</span>
+                                        <span>Electronic Door Locks</span>
                                     </div>
                                     <div className="room2-amenity-item">
                                         <div className="room2-amenity-icon">✓</div>
@@ -255,10 +255,10 @@ const Room2 = ({ isOpen, onClose }) => {
                                     <span>• Accessible bathroom with grab bars</span>
                                 </div>
                                 <div className="room2-accessibility-item">
-                                    <span>• Roll-in shower available</span>
+                                    <span>• Roll-in shower available upon request</span>
                                 </div>
                                 <div className="room2-accessibility-item">
-                                    <span>• Lowered closet rods</span>
+                                    <span>• Lowered closet rods and shelves</span>
                                 </div>
                                 <div className="room2-accessibility-item">
                                     <span>• Visual notification devices</span>
@@ -272,8 +272,8 @@ const Room2 = ({ isOpen, onClose }) => {
                                 <div className="room2-price-display">
                                     <span className="room2-price-label">Starting from</span>
                                     <div className="room2-price-main">
-                                        <span className="room2-original-price">$110</span>
-                                        <span className="room2-current-price">$99</span>
+                                        <span className="room2-original-price">$124</span>
+                                        <span className="room2-current-price">$114</span>
                                     </div>
                                     <span className="room2-price-period">USD per night</span>
                                 </div>

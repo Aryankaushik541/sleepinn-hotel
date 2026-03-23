@@ -2,9 +2,12 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./home.css";
 import Amenities from "./aminities.jsx";
-import Room1 from './room1.jsx'; // Import Room1 component
+import Room1 from './room1.jsx';
 import Room2 from './room2.jsx';
+import Room3 from './room3.jsx';
 import './room2.css';
+import './room3.css';
+
 export default function Home() {
     const [showDesktopDropdown, setShowDesktopDropdown] = useState(false);
     const [showMobileNavigation, setShowMobileNavigation] = useState(false);
@@ -12,10 +15,12 @@ export default function Home() {
     const [activeSection, setActiveSection] = useState("overview");
     const [showAmenitiesModal, setShowAmenitiesModal] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    // Room1 Modal States - MOVED TO TOP LEVEL
+
+    // Room Modal States
     const [isRoom1Open, setIsRoom1Open] = useState(false);
     const [isRoom2Open, setIsRoom2Open] = useState(false);
-    // Functions add karo
+    const [isRoom3Open, setIsRoom3Open] = useState(false);
+
     const amenitiesImages = [
         "https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1200&q=80",
         "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&q=80",
@@ -35,6 +40,19 @@ export default function Home() {
             prev === 0 ? amenitiesImages.length - 1 : prev - 1
         );
     };
+
+    // Room1 Functions
+    const openRoom1Modal = () => {
+        setIsRoom1Open(true);
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeRoom1Modal = () => {
+        setIsRoom1Open(false);
+        document.body.style.overflow = 'unset';
+    };
+
+    // Room2 Functions
     const openRoom2Modal = () => {
         setIsRoom2Open(true);
         document.body.style.overflow = 'hidden';
@@ -44,14 +62,16 @@ export default function Home() {
         setIsRoom2Open(false);
         document.body.style.overflow = 'unset';
     };
-    const openRoom1Modal = () => {
-        setIsRoom1Open(true);
-        document.body.style.overflow = 'hidden'; // Prevent background scroll
+
+    // Room3 Functions
+    const openRoom3Modal = () => {
+        setIsRoom3Open(true);
+        document.body.style.overflow = 'hidden';
     };
 
-    const closeRoom1Modal = () => {
-        setIsRoom1Open(false);
-        document.body.style.overflow = 'unset'; // Restore scroll
+    const closeRoom3Modal = () => {
+        setIsRoom3Open(false);
+        document.body.style.overflow = 'unset';
     };
 
     const navigate = useNavigate();
@@ -152,10 +172,8 @@ export default function Home() {
 
     return (
         <>
-            {/* ============================ */}
             <section className="hotel-preview-wrapper">
 
-                {/* ============================ */}
                 <div className="hotel-preview">
                     <div className="preview-left">
                         <img
@@ -224,11 +242,10 @@ export default function Home() {
                     </div>
                 </div>
 
-                {/* RIGHT SIDE */}
+                {/* Overview Section */}
                 <div className="overview-container">
                     <div className="overview-section" id="overview">
 
-                        {/* LEFT SIDE */}
                         <div className="overview-left">
                             <p className="tag">OVERVIEW</p>
 
@@ -251,7 +268,6 @@ export default function Home() {
                             <a href="#" className="read-more">Read More</a>
                         </div>
 
-                        {/* RIGHT SIDE */}
                         <div className="overview-right-wrapper">
                             <div className="overview-right">
 
@@ -316,16 +332,18 @@ export default function Home() {
 
                     </div>
                 </div>
-                <section className="spring-promo">
-      <div className="spring-promo-container">
-        <h2 className="spring-promo-title">Spring stays = more savings</h2>
-        <p className="spring-promo-text">
-          Book your spring getaway and save 20% on 3 nights or more!* Book by April 6, 2026 and stay by April 11, 2026 at participating brands and at participating locations only. *Terms apply.
-        </p>
-      </div>
-    </section>
 
-                {/* ============================ */}
+                {/* Spring Promo Section */}
+                <section className="spring-promo">
+                    <div className="spring-promo-container">
+                        <h2 className="spring-promo-title">Spring stays = more savings</h2>
+                        <p className="spring-promo-text">
+                            Book your spring getaway and save 20% on 3 nights or more!* Book by April 6, 2026 and stay by April 11, 2026 at participating brands and at participating locations only. *Terms apply.
+                        </p>
+                    </div>
+                </section>
+
+                {/* Guest Rooms Section */}
                 <div className="guest-rooms-section" id="guest-rooms">
                     <div className="rooms-header">
                         <div className="rooms-title">
@@ -354,7 +372,7 @@ export default function Home() {
                     </div>
 
                     <div className="rooms-grid">
-                        {/* Room 1 - With Modal */}
+                        {/* Room 1 */}
                         <div className="room-card">
                             <div className="room-image" onClick={openRoom1Modal} style={{ cursor: 'pointer' }}>
                                 <img src="https://www.choicehotels.com/hoteldam/ar/ar352/images/1280/AR352NQQ1.jpg?webp=true" alt="1 King Bed Room" />
@@ -446,45 +464,45 @@ export default function Home() {
                             </div>
                         </div>
 
-                        {/* Room2 Modal */}
-                        <Room2 isOpen={isRoom2Open} onClose={closeRoom2Modal} />
-
                         {/* Room 3 */}
                         <div className="room-card">
-                            <div className="room-image">
-                                <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1200&q=80" alt="1 King Bed Suite" />
+                            <div className="room-image" onClick={openRoom3Modal} style={{ cursor: 'pointer' }}>
+                                <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1200&q=80" alt="Deluxe Suite with Jacuzzi" />
                                 <span className="room-count">2</span>
+                                <div className="image-overlay">
+                                    <span className="view-photos">View Details</span>
+                                </div>
                             </div>
 
                             <div className="room-details">
-                                <h3>1 King Bed, Nonsmoking</h3>
+                                <h3>Deluxe Suite with Jacuzzi</h3>
 
                                 <div className="room-specs">
                                     <span className="spec">🛏️ 1 King Bed</span>
-                                    <span className="spec">👥 No Smoking</span>
-                                    <span className="spec">📐 350 sq ft</span>
+                                    <span className="spec">🛁 Private Jacuzzi</span>
+                                    <span className="spec">📐 550 sq ft</span>
                                 </div>
 
                                 <div className="room-features">
                                     <div className="feature-row">
-                                        <span>• 1 king bed with sofa bed</span>
-                                        <span>• 32-inch TV with cable/satellite</span>
-                                        <span>• Air conditioning</span>
+                                        <span>• Private Jacuzzi Tub</span>
+                                        <span>• Rainfall Shower</span>
+                                        <span>• Spa Robes & Slippers</span>
                                     </div>
                                     <div className="feature-row">
-                                        <span>• Mini refrigerator</span>
-                                        <span>• Desk with ergonomic chair</span>
-                                        <span>• Free WiFi</span>
+                                        <span>• 75-Inch 4K Smart TV</span>
+                                        <span>• Full Kitchen</span>
+                                        <span>• Executive Workspace</span>
                                     </div>
                                 </div>
 
-                                <button className="room-details-btn">Room Details</button>
+                                <button className="room-details-btn" onClick={openRoom3Modal}>Room Details</button>
                             </div>
 
                             <div className="room-pricing">
                                 <div className="price-info">
                                     <span className="price-label">from</span>
-                                    <span className="price">$112</span>
+                                    <span className="price">$249</span>
                                     <span className="price-period">USD per night</span>
                                     <p className="price-note">Excludes taxes and fees</p>
                                 </div>
@@ -494,9 +512,12 @@ export default function Home() {
                     </div>
                 </div>
 
-                {/* Room1 Modal */}
+                {/* Room Modals */}
                 <Room1 isOpen={isRoom1Open} onClose={closeRoom1Modal} />
-                {/* ============================ */}
+                <Room2 isOpen={isRoom2Open} onClose={closeRoom2Modal} />
+                <Room3 isOpen={isRoom3Open} onClose={closeRoom3Modal} />
+
+                {/* Amenities Section */}
                 <div className="amenities-section" id="amenities">
                     <div className="amenities-left">
                         <p className="tag">AMENITIES</p>
@@ -556,7 +577,6 @@ export default function Home() {
                                     className="amenities-slider-image"
                                 />
 
-                                {/* Navigation Arrows */}
                                 <button
                                     className="amenities-slider-arrow amenities-slider-arrow-left"
                                     onClick={prevImage}
@@ -572,7 +592,6 @@ export default function Home() {
                                 </button>
                             </div>
 
-                            {/* Image Indicators */}
                             <div className="amenities-slider-indicators">
                                 {amenitiesImages.map((_, index) => (
                                     <button
@@ -585,7 +604,8 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-                {/* ============================ */}
+
+                {/* Location Section */}
                 <div className="location-section" id="location">
                     <p className="tag">LOCATION</p>
                     <h2>Discover the charm of Searcy, AR</h2>
@@ -600,10 +620,9 @@ export default function Home() {
                     ></iframe>
                 </div>
 
-                {/* ============================ */}
+                {/* Nearby Section */}
                 <div className="nearby-section">
 
-                    {/* LEFT */}
                     <div className="nearby-left">
                         <h4>Find us</h4>
                         <p><b>1200 Truman Baker Drive, Searcy, AR, 72143, US</b></p>
@@ -613,7 +632,6 @@ export default function Home() {
                         </p>
                     </div>
 
-                    {/* RIGHT */}
                     <div className="nearby-right">
                         <h3>What's nearby</h3>
 
@@ -723,7 +741,7 @@ export default function Home() {
 
                 </div>
 
-                {/* ============================ */}
+                {/* Info Section */}
                 <div className="info-section" id="info">
                     <p className="tag">INFO</p>
                     <h2>Essential details</h2>
@@ -749,188 +767,322 @@ export default function Home() {
                         <div className="info-item">
                             <div className="info-icon">🚭</div>
                             <div>
-                                <h4>No Smoking</h4>
-                                <p>100% Smoke Free Hotel</p>
+                                <h4>Smoking Policy</h4>
+                                <p>100% Smoke Free</p>
                             </div>
                         </div>
 
                         <div className="info-item">
-                            <div className="info-icon">📞</div>
-                            <div>
-                                <h4>Phone Number</h4>
-                                <p>(501) 254-0074</p>
-                            </div>
-                        </div>
-
-                        <div className="info-item">
-                            <div className="info-icon">👶</div>
-                            <div>
-                                <h4>Children</h4>
-                                <p>Stay free under 18</p>
-                            </div>
-                        </div>
-
-                        <div className="info-item">
-                            <div className="info-icon">🏢</div>
-                            <div>
-                                <h4>Office Hours</h4>
-                                <p>24/7</p>
-                            </div>
-                        </div>
-
-                        <div className="info-item">
-                            <div className="info-icon">🐾</div>
+                            <div className="info-icon">🐕</div>
                             <div>
                                 <h4>Pets</h4>
-                                <p>No pets allowed</p>
+                                <p>Not Allowed</p>
+                            </div>
+                        </div>
+
+                        <div className="info-item">
+                            <div className="info-icon">💳</div>
+                            <div>
+                                <h4>Payment Methods</h4>
+                                <p>All Major Cards</p>
+                            </div>
+                        </div>
+
+                        <div className="info-item">
+                            <div className="info-icon">♿</div>
+                            <div>
+                                <h4>Accessibility</h4>
+                                <p>ADA Compliant</p>
+                            </div>
+                        </div>
+
+                        <div className="info-item">
+                            <div className="info-icon">🌐</div>
+                            <div>
+                                <h4>WiFi</h4>
+                                <p>Free High-Speed</p>
+                            </div>
+                        </div>
+
+                        <div className="info-item">
+                            <div className="info-icon">🅿️</div>
+                            <div>
+                                <h4>Parking</h4>
+                                <p>Free On-Site</p>
+                            </div>
+                        </div>
+
+                        <div className="info-item">
+                            <div className="info-icon">🔐</div>
+                            <div>
+                                <h4>Security</h4>
+                                <p>24/7 Surveillance</p>
                             </div>
                         </div>
 
                     </div>
                 </div>
 
-                {/* ============================ */}
+                {/* Reviews Section */}
                 <div className="reviews-section" id="reviews">
-                    <div className="reviews-header">
-                        <div>
-                            <p className="tag">REVIEWS</p>
-                            <h2>Guest Reviews <span>(18 reviews)</span></h2>
+                    <p className="tag">REVIEWS</p>
+                    <h2>Guest Reviews</h2>
+
+                    <div className="reviews-container">
+                        <div className="reviews-summary">
+                            <div className="rating-display">
+                                <div className="rating-number">4.5</div>
+                                <div className="rating-stars">⭐⭐⭐⭐☆</div>
+                                <p className="rating-count">Based on 248 reviews</p>
+                            </div>
+
+                            <div className="rating-breakdown">
+                                <div className="rating-bar">
+                                    <span>5 ⭐</span>
+                                    <div className="bar">
+                                        <div className="fill" style={{ width: '60%' }}></div>
+                                    </div>
+                                    <span>60%</span>
+                                </div>
+                                <div className="rating-bar">
+                                    <span>4 ⭐</span>
+                                    <div className="bar">
+                                        <div className="fill" style={{ width: '25%' }}></div>
+                                    </div>
+                                    <span>25%</span>
+                                </div>
+                                <div className="rating-bar">
+                                    <span>3 ⭐</span>
+                                    <div className="bar">
+                                        <div className="fill" style={{ width: '10%' }}></div>
+                                    </div>
+                                    <span>10%</span>
+                                </div>
+                                <div className="rating-bar">
+                                    <span>2 ⭐</span>
+                                    <div className="bar">
+                                        <div className="fill" style={{ width: '3%' }}></div>
+                                    </div>
+                                    <span>3%</span>
+                                </div>
+                                <div className="rating-bar">
+                                    <span>1 ⭐</span>
+                                    <div className="bar">
+                                        <div className="fill" style={{ width: '2%' }}></div>
+                                    </div>
+                                    <span>2%</span>
+                                </div>
+                            </div>
                         </div>
 
-                        <button className="review-btn">Show all reviews</button>
+                        <div className="reviews-list">
+                            <div className="review-card">
+                                <div className="review-header">
+                                    <div className="reviewer-info">
+                                        <div className="reviewer-avatar">JD</div>
+                                        <div>
+                                            <h4>John Doe</h4>
+                                            <p>Verified Guest • 2 weeks ago</p>
+                                        </div>
+                                    </div>
+                                    <div className="review-rating">⭐⭐⭐⭐⭐</div>
+                                </div>
+                                <h5>Excellent Stay!</h5>
+                                <p>The room was clean and spacious. The staff was very friendly and helpful. The breakfast was delicious and had plenty of options. I would definitely stay here again!</p>
+                                <div className="review-footer">
+                                    <button>👍 Helpful (12)</button>
+                                    <button>👎 Not Helpful (1)</button>
+                                </div>
+                            </div>
+
+                            <div className="review-card">
+                                <div className="review-header">
+                                    <div className="reviewer-info">
+                                        <div className="reviewer-avatar">SM</div>
+                                        <div>
+                                            <h4>Sarah Miller</h4>
+                                            <p>Verified Guest • 1 month ago</p>
+                                        </div>
+                                    </div>
+                                    <div className="review-rating">⭐⭐⭐⭐</div>
+                                </div>
+                                <h5>Great Value for Money</h5>
+                                <p>Good location, clean rooms, and friendly staff. The pool was nice and the fitness center was well-equipped. Only minor issue was the noise from the hallway at night, but overall a great experience.</p>
+                                <div className="review-footer">
+                                    <button>👍 Helpful (8)</button>
+                                    <button>👎 Not Helpful (0)</button>
+                                </div>
+                            </div>
+
+                            <div className="review-card">
+                                <div className="review-header">
+                                    <div className="reviewer-info">
+                                        <div className="reviewer-avatar">MJ</div>
+                                        <div>
+                                            <h4>Michael Johnson</h4>
+                                            <p>Verified Guest • 1 month ago</p>
+                                        </div>
+                                    </div>
+                                    <div className="review-rating">⭐⭐⭐⭐⭐</div>
+                                </div>
+                                <h5>Perfect for Business Travel</h5>
+                                <p>Stayed here for a business conference. The business center was excellent, WiFi was fast and reliable. The room had everything I needed including a comfortable desk. Highly recommended for business travelers!</p>
+                                <div className="review-footer">
+                                    <button>👍 Helpful (15)</button>
+                                    <button>👎 Not Helpful (0)</button>
+                                </div>
+                            </div>
+
+                            <div className="review-card">
+                                <div className="review-header">
+                                    <div className="reviewer-info">
+                                        <div className="reviewer-avatar">EB</div>
+                                        <div>
+                                            <h4>Emily Brown</h4>
+                                            <p>Verified Guest • 2 months ago</p>
+                                        </div>
+                                    </div>
+                                    <div className="review-rating">⭐⭐⭐⭐</div>
+                                </div>
+                                <h5>Nice Hotel, Good Service</h5>
+                                <p>The hotel is well-maintained and the staff is courteous. Breakfast was good with variety. The room was comfortable. Would have given 5 stars but the parking area could be better lit at night.</p>
+                                <div className="review-footer">
+                                    <button>👍 Helpful (6)</button>
+                                    <button>👎 Not Helpful (1)</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div className="reviews-summary">
-                        <div className="rating-circle">
-                            <h1>4.7</h1>
-                            <span>/5</span>
-                        </div>
-
-                        <div className="rating-details">
-                            <p className="recommend">94% guests recommend this hotel</p>
-
-                            <div className="rating-bars">
-                                <div className="bar-item"><span>Cleanliness</span><div className="bar"><div style={{ width: "100%" }}></div></div><span>5</span></div>
-                                <div className="bar-item"><span>Value</span><div className="bar"><div style={{ width: "94%" }}></div></div><span>4.7</span></div>
-                                <div className="bar-item"><span>Safety & Security</span><div className="bar"><div style={{ width: "98%" }}></div></div><span>4.9</span></div>
-                                <div className="bar-item"><span>Staff Service</span><div className="bar"><div style={{ width: "98%" }}></div></div><span>4.9</span></div>
-                                <div className="bar-item"><span>Amenities</span><div className="bar"><div style={{ width: "94%" }}></div></div><span>4.7</span></div>
-                                <div className="bar-item"><span>Property Condition</span><div className="bar"><div style={{ width: "98%" }}></div></div><span>4.9</span></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="reviews-cards">
-                        <div className="review-card">
-                            <p className="stars">⭐⭐⭐⭐⭐ <span>5/5</span></p>
-                            <h4>Newly remodeled and friendly</h4>
-                            <p>Great people and hotel!</p>
-
-                            <div className="review-footer">
-                                <div>
-                                    <p className="name">Chesshir, Jay</p>
-                                    <p className="date">March 2026</p>
-                                </div>
-                                <span className="verified">Verified</span>
-                            </div>
-                        </div>
-
-                        <div className="review-card">
-                            <p className="stars">⭐⭐⭐⭐⭐ <span>5/5</span></p>
-                            <h4>Great Hotel</h4>
-                            <p>Really nice room, super comfortable bed, spotless clean.</p>
-
-                            <div className="review-footer">
-                                <div>
-                                    <p className="name">Smith, John</p>
-                                    <p className="date">February 2026</p>
-                                </div>
-                                <span className="verified">Verified</span>
-                            </div>
-                        </div>
-
-                        <div className="review-card">
-                            <p className="stars">⭐⭐⭐⭐ <span>4/5</span></p>
-                            <h4>Good value for money</h4>
-                            <p>Clean rooms, friendly staff, good breakfast. Would stay again.</p>
-
-                            <div className="review-footer">
-                                <div>
-                                    <p className="name">Johnson, Mary</p>
-                                    <p className="date">January 2026</p>
-                                </div>
-                                <span className="verified">Verified</span>
-                            </div>
-                        </div>
-                    </div>
+                    <button className="load-more-reviews">Load More Reviews</button>
                 </div>
 
-                {/* ============================ */}
+                {/* Contact Section */}
                 <div className="contact-section" id="contact">
-                    <div className="contact-header">
-                        <p className="tag">CONTACT US</p>
-                        <h2>Get in Touch</h2>
-                        <p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
-                    </div>
+                    <p className="tag">CONTACT</p>
+                    <h2>Get in Touch</h2>
 
-                    <div className="contact-content">
+                    <div className="contact-container">
                         <div className="contact-info">
                             <div className="contact-item">
-                                <span className="contact-icon">📞</span>
+                                <div className="contact-icon">📞</div>
                                 <div>
                                     <h4>Phone</h4>
-                                    <p>(501) 254-0074</p>
-                                    <small>Available 24/7</small>
+                                    <p><a href="tel:+15015922000">+1 (501) 592-2000</a></p>
                                 </div>
                             </div>
 
                             <div className="contact-item">
-                                <span className="contact-icon">✉️</span>
+                                <div className="contact-icon">📧</div>
                                 <div>
                                     <h4>Email</h4>
-                                    <p>info@sleepinn.com</p>
-                                    <small>We'll reply within 24 hours</small>
+                                    <p><a href="mailto:info@sleepinn-searcy.com">info@sleepinn-searcy.com</a></p>
                                 </div>
                             </div>
 
                             <div className="contact-item">
-                                <span className="contact-icon">📍</span>
+                                <div className="contact-icon">📍</div>
                                 <div>
                                     <h4>Address</h4>
-                                    <p>1200 Truman Baker Drive</p>
-                                    <small>Searcy, AR 72143, US</small>
+                                    <p>1200 Truman Baker Drive<br />Searcy, AR 72143, US</p>
+                                </div>
+                            </div>
+
+                            <div className="contact-item">
+                                <div className="contact-icon">🕐</div>
+                                <div>
+                                    <h4>Hours</h4>
+                                    <p>24/7 Front Desk<br />Available Always</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="contact-form">
-                            <form>
-                                <div className="form-row">
-                                    <input type="text" placeholder="Your Name" required />
-                                    <input type="email" placeholder="Your Email" required />
-                                </div>
+                        <form className="contact-form">
+                            <div className="form-group">
+                                <label htmlFor="name">Full Name</label>
+                                <input type="text" id="name" placeholder="Your Name" required />
+                            </div>
 
-                                <input type="text" placeholder="Subject" required />
+                            <div className="form-group">
+                                <label htmlFor="email">Email Address</label>
+                                <input type="email" id="email" placeholder="your@email.com" required />
+                            </div>
 
-                                <textarea placeholder="Your Message" rows="5" required></textarea>
+                            <div className="form-group">
+                                <label htmlFor="phone">Phone Number</label>
+                                <input type="tel" id="phone" placeholder="+1 (501) 000-0000" />
+                            </div>
 
-                                <button type="submit" className="submit-btn">Send Message</button>
-                            </form>
-                        </div>
+                            <div className="form-group">
+                                <label htmlFor="subject">Subject</label>
+                                <input type="text" id="subject" placeholder="How can we help?" required />
+                            </div>
+
+                            <div className="form-group">
+                                <label htmlFor="message">Message</label>
+                                <textarea id="message" rows="5" placeholder="Your message here..." required></textarea>
+                            </div>
+
+                            <button type="submit" className="submit-btn">Send Message</button>
+                        </form>
                     </div>
                 </div>
 
-                <Amenities
-                    isOpen={showAmenitiesModal}
-                    onClose={() => setShowAmenitiesModal(false)}
-                />
+                {/* Footer Section */}
+                <footer className="footer-section">
+                    <div className="footer-container">
+                        <div className="footer-column">
+                            <h4>About Sleep Inn</h4>
+                            <ul>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Our Story</a></li>
+                                <li><a href="#">Careers</a></li>
+                                <li><a href="#">Press</a></li>
+                            </ul>
+                        </div>
+
+                        <div className="footer-column">
+                            <h4>Guest Services</h4>
+                            <ul>
+                                <li><a href="#">Reservations</a></li>
+                                <li><a href="#">Manage Booking</a></li>
+                                <li><a href="#">Loyalty Program</a></li>
+                                <li><a href="#">Group Bookings</a></li>
+                            </ul>
+                        </div>
+
+                        <div className="footer-column">
+                            <h4>Policies</h4>
+                            <ul>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Terms & Conditions</a></li>
+                                <li><a href="#">Cancellation Policy</a></li>
+                                <li><a href="#">Cookie Policy</a></li>
+                            </ul>
+                        </div>
+
+                        <div className="footer-column">
+                            <h4>Follow Us</h4>
+                            <div className="social-links">
+                                <a href="#" className="social-icon">f</a>
+                                <a href="#" className="social-icon">𝕏</a>
+                                <a href="#" className="social-icon">📷</a>
+                                <a href="#" className="social-icon">▶️</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="footer-bottom">
+                        <p>&copy; 2026 Sleep Inn & Suites Searcy. All rights reserved.</p>
+                    </div>
+                </footer>
+
+                {/* Amenities Modal */}
+                {showAmenitiesModal && (
+                    <Amenities onClose={() => setShowAmenitiesModal(false)} />
+                )}
 
             </section>
-
-            {/* Amenities Modal */}
-            {showAmenitiesModal && (
-                <Amenities onClose={() => setShowAmenitiesModal(false)} />
-            )}
         </>
     );
 }

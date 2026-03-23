@@ -1,14 +1,14 @@
 .room3-modal-overlay {
     position: fixed;
-    top: -2600px;
+    top: -2900px;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: 1900px;
     background: rgba(0, 0, 0, 0.8);
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 9999;
+    z-index: 1;
     padding: 20px;
     animation: fadeIn 0.3s ease;
 }
@@ -16,12 +16,14 @@
 .room3-modal {
     background: white;
     border-radius: 16px;
-    max-width: 900px;
+    max-width: 800px;
     width: 100%;
-    max-height: 90vh;
+    max-height: 500px;
     overflow-y: auto;
     position: relative;
     animation: slideUp 0.3s ease;
+    margin-top: 60px;
+    z-index: 1;
 }
 
 .room3-close-btn {

@@ -1,9 +1,9 @@
 .room1-modal-overlay {
     position: fixed;
-    top: -400px;
+    top: -2000px;
     left: 0;
     right: 0;
-    bottom: 1900px;
+    bottom: 2400px;
     background: rgba(0, 0, 0, 0.8);
     display: flex;
     align-items: center;

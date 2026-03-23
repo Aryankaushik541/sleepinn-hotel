@@ -2105,3 +2105,81 @@ body {
     right: 10px;
   }
 }
+/* SpringPromo.css */
+.spring-promo {
+  background: linear-gradient(95deg, #0d5a8f 0%, #1a7ab8 100%);
+  padding: 16px 24px;
+  color: white;
+  width: 100%;
+  margin-top: 46px;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.spring-promo-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.spring-promo-title {
+  font-size: 25px;
+  font-weight: 700;
+  margin: 0 0 2px 0;
+  line-height: 1.2;
+}
+
+.spring-promo-text {
+  font-size: 17px;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .spring-promo {
+    padding: 32px 24px;
+  }
+
+  .spring-promo-title {
+    font-size: 28px;
+  }
+
+  .spring-promo-text {
+    font-size: 15px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .spring-promo {
+    padding: 24px 16px;
+  }
+
+  .spring-promo-title {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  .spring-promo-text {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .spring-promo {
+    padding: 20px 12px;
+  }
+
+  .spring-promo-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .spring-promo-text {
+    font-size: 13px;
+  }
+}
