@@ -96,17 +96,17 @@ body {
 }
 
 .overview-left h2 {
-  font-size: 40px;
+  font-size: 35px;
   font-weight: 700;
-  line-height: 1.25;
+  line-height: 1.20;
   margin: 12px 0 18px;
   color: black;
 }
 
 .desc {
   color: black;
-  line-height: 1.9;
-  font-size: 15px;
+  line-height: 1.7;
+  font-size: 13px;
   max-width: 90%;
 }
 
@@ -139,10 +139,10 @@ body {
 .overview-right-wrapper::before {
   content: "";
   position: absolute;
-  top: -5px;
+  top: -1px;
   right: 14px;
-  width: 500px;
-  height: 400px;
+  width: 580px;
+  height: 380px;
   background: #5b2d90;
   border-radius: 10px;
   z-index: 1;
