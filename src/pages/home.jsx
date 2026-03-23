@@ -11,11 +11,30 @@ export default function Home() {
     const [showMobileSubmenu, setShowMobileSubmenu] = useState(false);
     const [activeSection, setActiveSection] = useState("overview");
     const [showAmenitiesModal, setShowAmenitiesModal] = useState(false);
-
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
     // Room1 Modal States - MOVED TO TOP LEVEL
     const [isRoom1Open, setIsRoom1Open] = useState(false);
     const [isRoom2Open, setIsRoom2Open] = useState(false);
     // Functions add karo
+    const amenitiesImages = [
+        "https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80"
+    ];
+
+    const nextImage = () => {
+        setCurrentImageIndex((prev) =>
+            prev === amenitiesImages.length - 1 ? 0 : prev + 1
+        );
+    };
+
+    const prevImage = () => {
+        setCurrentImageIndex((prev) =>
+            prev === 0 ? amenitiesImages.length - 1 : prev - 1
+        );
+    };
     const openRoom2Modal = () => {
         setIsRoom2Open(true);
         document.body.style.overflow = 'hidden';
@@ -322,8 +341,8 @@ export default function Home() {
 
                     <div className="room-selection-filters">
                         <button className="filter-btn active">All rooms</button>
-                        <button className="filter-btn">1 bed</button>
-                        <button className="filter-btn">2+ beds</button>
+                        <button className="filter-btn">🛏️ 1 Bed (2)</button>
+                        <button className="filter-btn">🛏️ 2+ Beds (1)</button>
                     </div>
 
                     <div className="rooms-grid">
@@ -521,13 +540,43 @@ export default function Home() {
                     </div>
 
                     <div className="amenities-right">
-                        <img
-                            src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1200&q=80"
-                            alt="Amenities"
-                        />
+                        <div className="amenities-image-slider">
+                            <div className="amenities-slider-container">
+                                <img
+                                    src={amenitiesImages[currentImageIndex]}
+                                    alt={`Amenities view ${currentImageIndex + 1}`}
+                                    className="amenities-slider-image"
+                                />
+
+                                {/* Navigation Arrows */}
+                                <button
+                                    className="amenities-slider-arrow amenities-slider-arrow-left"
+                                    onClick={prevImage}
+                                >
+                                    &#8249;
+                                </button>
+
+                                <button
+                                    className="amenities-slider-arrow amenities-slider-arrow-right"
+                                    onClick={nextImage}
+                                >
+                                    &#8250;
+                                </button>
+                            </div>
+
+                            {/* Image Indicators */}
+                            <div className="amenities-slider-indicators">
+                                {amenitiesImages.map((_, index) => (
+                                    <button
+                                        key={index}
+                                        className={`amenities-indicator ${index === currentImageIndex ? 'active' : ''}`}
+                                        onClick={() => setCurrentImageIndex(index)}
+                                    />
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </div>
-
                 {/* ============================ */}
                 <div className="location-section" id="location">
                     <p className="tag">LOCATION</p>
