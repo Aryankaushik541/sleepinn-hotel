@@ -408,151 +408,301 @@ export default function Home() {
                     </div>
                     
                     <div className="rooms-grid">
-                        {/* Room 1 - With Modal */}
-                        <div className="room-card">
-                            <div className="room-image" onClick={openRoom1Modal} style={{ cursor: 'pointer' }}>
-                                <img src="https://www.choicehotels.com/hoteldam/ar/ar352/images/1280/AR352NQQ1.jpg?webp=true" alt="1 King Bed Room" />
-                                <span className="room-count">5</span>
-                                <div className="image-overlay">
-                                    <span className="view-photos">View Details</span>
-                                </div>
-                            </div>
-
-                            <div className="room-details">
-                                <h3>1 King Bed, Nonsmoking</h3>
-
-                                <div className="room-specs">
-                                    <span className="spec">🛏️ 1 King Bed</span>
-                                    <span className="spec">👥 No Smoking</span>
-                                    <span className="spec">📐 300 sq ft</span>
-                                </div>
-
-                                <div className="room-features">
-                                    <div className="feature-row">
-                                        <span>• Microwave</span>
-                                        <span>• 32-inch TV with cable/satellite</span>
-                                        <span>• Air conditioning</span>
+                        {/* Room cards section with filters */}
+                        {activeFilter === 'all' && (
+                            <>
+                                {/* Room 1 - With Modal */}
+                                <div className="room-card">
+                                    <div className="room-image" onClick={openRoom1Modal} style={{ cursor: 'pointer' }}>
+                                        <img src="https://www.choicehotels.com/hoteldam/ar/ar352/images/1280/AR352NQQ1.jpg?webp=true" alt="1 King Bed Room" />
+                                        <span className="room-count">5</span>
+                                        <div className="image-overlay">
+                                            <span className="view-photos">View Details</span>
+                                        </div>
                                     </div>
-                                    <div className="feature-row">
-                                        <span>• Coffee maker with coffee</span>
-                                        <span>• Desk with ergonomic chair</span>
-                                        <span>• Free WiFi</span>
+
+                                    <div className="room-details">
+                                        <h3>1 King Bed, Nonsmoking</h3>
+
+                                        <div className="room-specs">
+                                            <span className="spec">🛏️ 1 King Bed</span>
+                                            <span className="spec">👥 No Smoking</span>
+                                            <span className="spec">📐 300 sq ft</span>
+                                        </div>
+
+                                        <div className="room-features">
+                                            <div className="feature-row">
+                                                <span>• Microwave</span>
+                                                <span>• 32-inch TV with cable/satellite</span>
+                                                <span>• Air conditioning</span>
+                                            </div>
+                                            <div className="feature-row">
+                                                <span>• Coffee maker with coffee</span>
+                                                <span>• Desk with ergonomic chair</span>
+                                                <span>• Free WiFi</span>
+                                            </div>
+                                        </div>
+
+                                        <button className="room-details-btn" onClick={openRoom1Modal}>Room Details</button>
                                     </div>
-                                </div>
 
-                                <button className="room-details-btn" onClick={openRoom1Modal}>Room Details</button>
-                            </div>
-
-                            <div className="room-pricing">
-                                <div className="price-info">
-                                    <span className="price-label">from</span>
-                                    <span className="price">$94</span>
-                                    <span className="price-period">USD per night</span>
-                                    <p className="price-note">Excludes taxes and fees</p>
-                                </div>
-                                <button className="book-room-btn">View rates</button>
-                            </div>
-                        </div>
-
-                        {/* Room 2 - With Modal */}
-                        <div className="room-card">
-                            <div className="room-image" onClick={openRoom2Modal} style={{ cursor: 'pointer' }}>
-                                <img src="https://www.choicehotels.com/hoteldam/ar/ar352/images/1280/AR352Exterior3.jpg?webp=true" alt="2 Queen Beds Room" />
-                                <span className="room-count">3</span>
-                                <div className="image-overlay">
-                                    <span className="view-photos">View Details</span>
-                                </div>
-                            </div>
-
-                            <div className="room-details">
-                                <h3>2 Queen Beds, Nonsmoking</h3>
-
-                                <div className="room-specs">
-                                    <span className="spec">🛏️ 2 Queen Beds</span>
-                                    <span className="spec">👥 No Smoking</span>
-                                    <span className="spec">📐 300 sq ft</span>
-                                </div>
-
-                                <div className="room-features">
-                                    <div className="feature-row">
-                                        <span>• Microwave</span>
-                                        <span>• 32-inch TV with cable/satellite</span>
-                                        <span>• Air conditioning</span>
-                                    </div>
-                                    <div className="feature-row">
-                                        <span>• Coffee maker with coffee</span>
-                                        <span>• Desk with ergonomic chair</span>
-                                        <span>• Free WiFi</span>
+                                    <div className="room-pricing">
+                                        <div className="price-info">
+                                            <span className="price-label">from</span>
+                                            <span className="price">$94</span>
+                                            <span className="price-period">USD per night</span>
+                                            <p className="price-note">Excludes taxes and fees</p>
+                                        </div>
+                                        <button className="book-room-btn">View rates</button>
                                     </div>
                                 </div>
 
-                                <button className="room-details-btn" onClick={openRoom2Modal}>Room Details</button>
-                            </div>
-
-                            <div className="room-pricing">
-                                <div className="price-info">
-                                    <span className="price-label">from</span>
-                                    <span className="price">$98</span>
-                                    <span className="price-period">USD per night</span>
-                                    <p className="price-note">Excludes taxes and fees</p>
-                                </div>
-                                <button className="book-room-btn">View rates</button>
-                            </div>
-                        </div>
-
-                        {/* Room 3 - With Modal */}
-                        <div className="room-card">
-                            <div className="room-image" onClick={openRoom3Modal} style={{ cursor: 'pointer' }}>
-                                <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1200&q=80" alt="1 King Bed Suite" />
-                                <span className="room-count">2</span>
-                                <div className="image-overlay">
-                                    <span className="view-photos">View Details</span>
-                                </div>
-                            </div>
-
-                            <div className="room-details">
-                                <h3>1 King Bed, Nonsmoking</h3>
-
-                                <div className="room-specs">
-                                    <span className="spec">🛏️ 1 King Bed</span>
-                                    <span className="spec">👥 No Smoking</span>
-                                    <span className="spec">📐 350 sq ft</span>
-                                </div>
-
-                                <div className="room-features">
-                                    <div className="feature-row">
-                                        <span>• 1 king bed with sofa bed</span>
-                                        <span>• 32-inch TV with cable/satellite</span>
-                                        <span>• Air conditioning</span>
+                                {/* Room 2 - With Modal */}
+                                <div className="room-card">
+                                    <div className="room-image" onClick={openRoom2Modal} style={{ cursor: 'pointer' }}>
+                                        <img src="https://www.choicehotels.com/hoteldam/ar/ar352/images/1280/AR352Exterior3.jpg?webp=true" alt="2 Queen Beds Room" />
+                                        <span className="room-count">3</span>
+                                        <div className="image-overlay">
+                                            <span className="view-photos">View Details</span>
+                                        </div>
                                     </div>
-                                    <div className="feature-row">
-                                        <span>• Mini refrigerator</span>
-                                        <span>• Desk with ergonomic chair</span>
-                                        <span>• Free WiFi</span>
+
+                                    <div className="room-details">
+                                        <h3>2 Queen Beds, Nonsmoking</h3>
+
+                                        <div className="room-specs">
+                                            <span className="spec">🛏️ 2 Queen Beds</span>
+                                            <span className="spec">👥 No Smoking</span>
+                                            <span className="spec">📐 300 sq ft</span>
+                                        </div>
+
+                                        <div className="room-features">
+                                            <div className="feature-row">
+                                                <span>• Microwave</span>
+                                                <span>• 32-inch TV with cable/satellite</span>
+                                                <span>• Air conditioning</span>
+                                            </div>
+                                            <div className="feature-row">
+                                                <span>• Coffee maker with coffee</span>
+                                                <span>• Desk with ergonomic chair</span>
+                                                <span>• Free WiFi</span>
+                                            </div>
+                                        </div>
+
+                                        <button className="room-details-btn" onClick={openRoom2Modal}>Room Details</button>
+                                    </div>
+
+                                    <div className="room-pricing">
+                                        <div className="price-info">
+                                            <span className="price-label">from</span>
+                                            <span className="price">$98</span>
+                                            <span className="price-period">USD per night</span>
+                                            <p className="price-note">Excludes taxes and fees</p>
+                                        </div>
+                                        <button className="book-room-btn">View rates</button>
                                     </div>
                                 </div>
 
-                                <button className="room-details-btn" onClick={openRoom3Modal}>Room Details</button>
-                            </div>
-                            
+                                {/* Room 3 - With Modal */}
+                                <div className="room-card">
+                                    <div className="room-image" onClick={openRoom3Modal} style={{ cursor: 'pointer' }}>
+                                        <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1200&q=80" alt="1 King Bed Suite" />
+                                        <span className="room-count">2</span>
+                                        <div className="image-overlay">
+                                            <span className="view-photos">View Details</span>
+                                        </div>
+                                    </div>
 
-                            <div className="room-pricing">
-                                <div className="price-info">
-                                    <span className="price-label">from</span>
-                                    <span className="price">$112</span>
-                                    <span className="price-period">USD per night</span>
-                                    <p className="price-note">Excludes taxes and fees</p>
+                                    <div className="room-details">
+                                        <h3>1 King Bed, Nonsmoking</h3>
+
+                                        <div className="room-specs">
+                                            <span className="spec">🛏️ 1 King Bed</span>
+                                            <span className="spec">👥 No Smoking</span>
+                                            <span className="spec">📐 350 sq ft</span>
+                                        </div>
+
+                                        <div className="room-features">
+                                            <div className="feature-row">
+                                                <span>• 1 king bed with sofa bed</span>
+                                                <span>• 32-inch TV with cable/satellite</span>
+                                                <span>• Air conditioning</span>
+                                            </div>
+                                            <div className="feature-row">
+                                                <span>• Mini refrigerator</span>
+                                                <span>• Desk with ergonomic chair</span>
+                                                <span>• Free WiFi</span>
+                                            </div>
+                                        </div>
+
+                                        <button className="room-details-btn" onClick={openRoom3Modal}>Room Details</button>
+                                    </div>
+
+                                    <div className="room-pricing">
+                                        <div className="price-info">
+                                            <span className="price-label">from</span>
+                                            <span className="price">$112</span>
+                                            <span className="price-period">USD per night</span>
+                                            <p className="price-note">Excludes taxes and fees</p>
+                                        </div>
+                                        <button className="book-room-btn">View rates</button>
+                                    </div>
                                 </div>
-                                <button className="book-room-btn">View rates</button>
-                            </div>
-                        </div>
+                            </>
+                        )}
                     </div>
                 </div>
 
-                {/* Room Modals */}
-                <Room1 isOpen={isRoom1Open} onClose={closeRoom1Modal} />
-                <Room2 isOpen={isRoom2Open} onClose={closeRoom2Modal} />
-                <Room3 isOpen={isRoom3Open} onClose={closeRoom3Modal} />
+                        {activeFilter === '1bed' && (
+                            <>
+                                {/* Room 1 - 1 King Bed */}
+                                <div className="room-card">
+                                    <div className="room-image" onClick={openRoom1Modal} style={{ cursor: 'pointer' }}>
+                                        <img src="https://www.choicehotels.com/hoteldam/ar/ar352/images/1280/AR352NQQ1.jpg?webp=true" alt="1 King Bed Room" />
+                                        <span className="room-count">5</span>
+                                        <div className="image-overlay">
+                                            <span className="view-photos">View Details</span>
+                                        </div>
+                                    </div>
+
+                                    <div className="room-details">
+                                        <h3>1 King Bed, Nonsmoking</h3>
+
+                                        <div className="room-specs">
+                                            <span className="spec">🛏️ 1 King Bed</span>
+                                            <span className="spec">👥 No Smoking</span>
+                                            <span className="spec">📐 300 sq ft</span>
+                                        </div>
+
+                                        <div className="room-features">
+                                            <div className="feature-row">
+                                                <span>• Microwave</span>
+                                                <span>• 32-inch TV with cable/satellite</span>
+                                                <span>• Air conditioning</span>
+                                            </div>
+                                            <div className="feature-row">
+                                                <span>• Coffee maker with coffee</span>
+                                                <span>• Desk with ergonomic chair</span>
+                                                <span>• Free WiFi</span>
+                                            </div>
+                                        </div>
+
+                                        <button className="room-details-btn" onClick={openRoom1Modal}>Room Details</button>
+                                    </div>
+
+                                    <div className="room-pricing">
+                                        <div className="price-info">
+                                            <span className="price-label">from</span>
+                                            <span className="price">$94</span>
+                                            <span className="price-period">USD per night</span>
+                                            <p className="price-note">Excludes taxes and fees</p>
+                                        </div>
+                                        <button className="book-room-btn">View rates</button>
+                                    </div>
+                                </div>
+
+                                {/* Room 3 - 1 King Bed */}
+                                <div className="room-card">
+                                    <div className="room-image" onClick={openRoom3Modal} style={{ cursor: 'pointer' }}>
+                                        <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1200&q=80" alt="1 King Bed Suite" />
+                                        <span className="room-count">2</span>
+                                        <div className="image-overlay">
+                                            <span className="view-photos">View Details</span>
+                                        </div>
+                                    </div>
+
+                                    <div className="room-details">
+                                        <h3>1 King Bed, Nonsmoking</h3>
+
+                                        <div className="room-specs">
+                                            <span className="spec">🛏️ 1 King Bed</span>
+                                            <span className="spec">👥 No Smoking</span>
+                                            <span className="spec">📐 350 sq ft</span>
+                                        </div>
+
+                                        <div className="room-features">
+                                            <div className="feature-row">
+                                                <span>• 1 king bed with sofa bed</span>
+                                                <span>• 32-inch TV with cable/satellite</span>
+                                                <span>• Air conditioning</span>
+                                            </div>
+                                            <div className="feature-row">
+                                                <span>• Mini refrigerator</span>
+                                                <span>• Desk with ergonomic chair</span>
+                                                <span>• Free WiFi</span>
+                                            </div>
+                                        </div>
+
+                                        <button className="room-details-btn" onClick={openRoom3Modal}>Room Details</button>
+                                    </div>
+
+                                    <div className="room-pricing">
+                                        <div className="price-info">
+                                            <span className="price-label">from</span>
+                                            <span className="price">$112</span>
+                                            <span className="price-period">USD per night</span>
+                                            <p className="price-note">Excludes taxes and fees</p>
+                                        </div>
+                                        <button className="book-room-btn">View rates</button>
+                                    </div>
+                                </div>
+                            </>
+                        )}
+
+                        {activeFilter === '2bed' && (
+                            <>
+                                {/* Room 2 - 2 Queen Beds */}
+                                <div className="room-card">
+                                    <div className="room-image" onClick={openRoom2Modal} style={{ cursor: 'pointer' }}>
+                                        <img src="https://www.choicehotels.com/hoteldam/ar/ar352/images/1280/AR352Exterior3.jpg?webp=true" alt="2 Queen Beds Room" />
+                                        <span className="room-count">3</span>
+                                        <div className="image-overlay">
+                                            <span className="view-photos">View Details</span>
+                                        </div>
+                                    </div>
+
+                                    <div className="room-details">
+                                        <h3>2 Queen Beds, Nonsmoking</h3>
+
+                                        <div className="room-specs">
+                                            <span className="spec">🛏️ 2 Queen Beds</span>
+                                            <span className="spec">👥 No Smoking</span>
+                                            <span className="spec">📐 300 sq ft</span>
+                                        </div>
+
+                                        <div className="room-features">
+                                            <div className="feature-row">
+                                                <span>• Microwave</span>
+                                                <span>• 32-inch TV with cable/satellite</span>
+                                                <span>• Air conditioning</span>
+                                            </div>
+                                            <div className="feature-row">
+                                                <span>• Coffee maker with coffee</span>
+                                                <span>• Desk with ergonomic chair</span>
+                                                <span>• Free WiFi</span>
+                                            </div>
+                                        </div>
+
+                                        <button className="room-details-btn" onClick={openRoom2Modal}>Room Details</button>
+                                    </div>
+
+                                    <div className="room-pricing">
+                                        <div className="price-info">
+                                            <span className="price-label">from</span>
+                                            <span className="price">$98</span>
+                                            <span className="price-period">USD per night</span>
+                                            <p className="price-note">Excludes taxes and fees</p>
+                                        </div>
+                                        <button className="book-room-btn">View rates</button>
+                                    </div>
+                                </div>
+                            </>
+                        )}
+
+                        {/* Room Modals - yeh same rahenge */}
+                        <Room1 isOpen={isRoom1Open} onClose={closeRoom1Modal} />
+                        <Room2 isOpen={isRoom2Open} onClose={closeRoom2Modal} />
+                        <Room3 isOpen={isRoom3Open} onClose={closeRoom3Modal} />
 
                 {/* ============================ */}
                 <div className="amenities-section" id="amenities">
