@@ -290,7 +290,6 @@
     from {
         opacity: 0;
     }
-
     to {
         opacity: 1;
     }
@@ -301,7 +300,6 @@
         opacity: 0;
         transform: translateY(50px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -382,92 +380,64 @@
     }
 }
 
-/* Mobile Large (481px - 767px) */
-@media (min-width: 481px) and (max-width: 767px) {
+/* Mobile Responsive - Enhanced */
+@media (max-width: 767px) {
     .room2-modal-overlay {
-        padding: 15px;
+        padding: 8px;
         align-items: flex-start;
-        padding-top: 30px;
+        padding-top: 10px;
+        bottom: 0;
     }
 
     .room2-modal {
-        max-width: 95vw;
-        max-height: 90vh;
-    }
-
-    .room2-image-section {
-        height: 250px;
-    }
-
-    .room2-info-section {
-        padding: 20px;
-    }
-
-    .room2-features {
-        padding: 0 10px;
-        gap: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .room2-feature-item {
-        min-width: 80px;
-        flex: 0 0 auto;
-    }
-
-    .room2-amenities-grid {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-
-    .room2-amenity-item {
-        padding: 10px;
-    }
-
-    .room2-pricing {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
-    }
-
-    .room2-book-btn {
         width: 100%;
-        padding: 14px;
+        max-width: 100%;
+        max-height: 95vh;
+        border-radius: 12px 12px 0 0;
+        margin: 0;
+    }
+
+    .room2-header {
+        padding: 16px 16px 0;
+        position: sticky;
+        top: 0;
+        background: white;
+        z-index: 5;
+        border-radius: 12px 12px 0 0;
+    }
+
+    .room2-header h2 {
+        font-size: 16px;
+        padding-bottom: 16px;
     }
 
     .room2-close-btn {
         top: 12px;
         right: 12px;
-        width: 30px;
-        height: 30px;
+        width: 36px;
+        height: 36px;
         font-size: 18px;
-    }
-}
-
-/* Mobile Small (320px - 480px) */
-@media (max-width: 480px) {
-    .room2-modal-overlay {
-        padding: 10px;
-        padding-top: 20px;
-    }
-
-    .room2-modal {
-        max-width: 100vw;
-        max-height: 95vh;
-        border-radius: 8px;
-    }
-
-    .room2-header {
-        padding: 15px 15px 0;
-    }
-
-    .room2-header h2 {
-        font-size: 16px;
-        padding-bottom: 15px;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
     .room2-image-section {
-        height: 220px;
+        height: 240px;
+    }
+
+    .room2-nav-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 16px;
+    }
+
+    .room2-prev {
+        left: 8px;
+    }
+
+    .room2-next {
+        right: 8px;
     }
 
     .room2-image-caption {
@@ -475,26 +445,13 @@
         padding: 8px 12px;
     }
 
-    .room2-nav-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 16px;
-    }
-
-    .room2-prev {
-        left: 10px;
-    }
-
-    .room2-next {
-        right: 10px;
-    }
-
     .room2-info-section {
-        padding: 16px;
+        padding: 20px 16px;
     }
 
     .room2-info-section h3 {
         font-size: 20px;
+        margin-bottom: 6px;
     }
 
     .room2-bed-info {
@@ -503,21 +460,27 @@
     }
 
     .room2-features {
-        padding: 0 5px;
-        gap: 8px;
+        padding: 0 8px;
+        gap: 12px;
         margin-bottom: 24px;
+        justify-content: space-around;
     }
 
     .room2-feature-item {
-        min-width: 70px;
+        min-width: 60px;
     }
 
     .room2-feature-icon {
         font-size: 20px;
+        margin-bottom: 2px;
     }
 
     .room2-feature-item span {
         font-size: 12px;
+    }
+
+    .room2-amenities-section {
+        margin-bottom: 24px;
     }
 
     .room2-amenities-section h4 {
@@ -531,12 +494,13 @@
     }
 
     .room2-amenities-grid {
+        grid-template-columns: 1fr;
         gap: 8px;
         margin-bottom: 12px;
     }
 
     .room2-amenity-item {
-        padding: 8px;
+        padding: 10px;
         gap: 10px;
     }
 
@@ -548,6 +512,7 @@
 
     .room2-amenity-item span {
         font-size: 12px;
+        line-height: 1.3;
     }
 
     .room2-additional-cost {
@@ -556,8 +521,10 @@
     }
 
     .room2-pricing {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
         padding-top: 20px;
-        gap: 12px;
     }
 
     .room2-current-price {
@@ -577,49 +544,132 @@
     }
 
     .room2-book-btn {
+        width: 100%;
+        padding: 14px;
         font-size: 14px;
-        padding: 12px;
-    }
-
-    .room2-close-btn {
-        top: 10px;
-        right: 10px;
-        width: 28px;
-        height: 28px;
-        font-size: 16px;
     }
 }
 
-/* Extra Small Mobile (below 320px) */
-@media (max-width: 319px) {
+@media (max-width: 480px) {
     .room2-modal-overlay {
-        padding: 5px;
-        padding-top: 15px;
+        padding: 0;
+        align-items: flex-end;
+    }
+
+    .room2-modal {
+        border-radius: 16px 16px 0 0;
+        max-height: 90vh;
+    }
+
+    .room2-header {
+        padding: 12px 12px 0;
+        border-radius: 16px 16px 0 0;
+    }
+
+    .room2-header h2 {
+        font-size: 15px;
+        padding-bottom: 12px;
+    }
+
+    .room2-close-btn {
+        top: 8px;
+        right: 8px;
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
     }
 
     .room2-image-section {
         height: 200px;
     }
 
+    .room2-nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+    }
+
     .room2-info-section {
-        padding: 12px;
+        padding: 16px 12px;
+    }
+
+    .room2-info-section h3 {
+        font-size: 18px;
     }
 
     .room2-features {
-        flex-direction: column;
-        gap: 12px;
-        align-items: center;
+        padding: 0 4px;
+        gap: 8px;
+        margin-bottom: 20px;
     }
 
     .room2-feature-item {
-        flex-direction: row;
-        gap: 8px;
-        min-width: auto;
+        min-width: 50px;
+    }
+
+    .room2-feature-icon {
+        font-size: 18px;
+    }
+
+    .room2-feature-item span {
+        font-size: 11px;
+    }
+
+    .room2-amenities-section h4 {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .room2-amenities-section h5 {
+        font-size: 13px;
+        margin-bottom: 12px;
+    }
+
+    .room2-amenities-grid {
+        gap: 6px;
     }
 
     .room2-amenity-item {
-        flex-direction: column;
-        text-align: center;
+        padding: 8px;
         gap: 8px;
+    }
+
+    .room2-amenity-icon {
+        width: 24px;
+        height: 24px;
+        font-size: 12px;
+    }
+
+    .room2-amenity-item span {
+        font-size: 11px;
+    }
+
+    .room2-additional-cost {
+        font-size: 10px;
+        margin-bottom: 16px;
+    }
+
+    .room2-pricing {
+        gap: 12px;
+        padding-top: 16px;
+    }
+
+    .room2-current-price {
+        font-size: 22px;
+    }
+
+    .room2-book-btn {
+        padding: 12px;
+        font-size: 13px;
+    }
+}
+
+/* Touch improvements */
+@media (hover: none) and (pointer: coarse) {
+    .room2-nav-btn,
+    .room2-close-btn,
+    .room2-book-btn {
+        min-height: 44px;
+        min-width: 44px;
     }
 }
