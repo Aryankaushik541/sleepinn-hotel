@@ -129,14 +129,7 @@ const Room3 = ({ isOpen, onClose }) => {
 
                     {/* Pricing */}
                     <div className="room3-pricing">
-                        <div className="room3-price-info">
-                            <div className="room3-price-display">
-                                <span className="room3-original-price">$299</span>
-                                <span className="room3-current-price">$249</span>
-                                <span className="room3-price-period">USD/night</span>
-                            </div>
-                            <p className="room3-member-rate">Member Rate</p>
-                        </div>
+                       
                         <button className="room3-book-btn">Book Now</button>
                     </div>
                 </div>

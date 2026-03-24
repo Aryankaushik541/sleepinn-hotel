@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./home.css";
 import Amenities from "./aminities.jsx";
+import Amen from "./amen.jsx";
 import Room1 from './room1.jsx';
 import Room2 from './room2.jsx';
 import Room3 from './room3.jsx'; // Import Room3 component
@@ -13,6 +14,7 @@ export default function Home() {
     const [showMobileSubmenu, setShowMobileSubmenu] = useState(false);
     const [activeSection, setActiveSection] = useState("overview");
     const [showAmenitiesModal, setShowAmenitiesModal] = useState(false);
+    const [showAmenitiesModal1, setShowAmenitiesModal1] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [activeFilter, setActiveFilter] = useState('all');
     // Room Modal States
@@ -427,13 +429,8 @@ export default function Home() {
                                     </div>
 
                                     <div className="room-pricing">
-                                        <div className="price-info">
-                                            <span className="price-label">from</span>
-                                            <span className="price">$94</span>
-                                            <span className="price-period">USD per night</span>
-                                            <p className="price-note">Excludes taxes and fees</p>
-                                        </div>
-                                        <button className="book-room-btn">View rates</button>
+                                       
+                                        <button className="book-room-btn">Book Now</button>
                                     </div>
                                 </div>
 
@@ -473,13 +470,8 @@ export default function Home() {
                                     </div>
 
                                     <div className="room-pricing">
-                                        <div className="price-info">
-                                            <span className="price-label">from</span>
-                                            <span className="price">$98</span>
-                                            <span className="price-period">USD per night</span>
-                                            <p className="price-note">Excludes taxes and fees</p>
-                                        </div>
-                                        <button className="book-room-btn">View rates</button>
+                                        
+                                        <button className="book-room-btn">Book Now</button>
                                     </div>
                                 </div>
 
@@ -519,13 +511,8 @@ export default function Home() {
                                     </div>
 
                                     <div className="room-pricing">
-                                        <div className="price-info">
-                                            <span className="price-label">from</span>
-                                            <span className="price">$112</span>
-                                            <span className="price-period">USD per night</span>
-                                            <p className="price-note">Excludes taxes and fees</p>
-                                        </div>
-                                        <button className="book-room-btn">View rates</button>
+                                        
+                                        <button className="book-room-btn">Book Now</button>
                                     </div>
                                 </div>
                             </>
@@ -729,7 +716,7 @@ export default function Home() {
                             </div>
                         </div>
 
-                        <button className="amenities-btn-dark" onClick={() => setShowAmenitiesModal(true)}>
+                        <button className="amenities-btn-dark" onClick={() =>  setShowAmenitiesModal1(true)}>
                             View all amenities
                         </button>
                         <p className="note">*May require an additional cost</p>
@@ -1118,7 +1105,7 @@ export default function Home() {
 
             {/* Amenities Modal */}
             {showAmenitiesModal && (
-                <Amenities onClose={() => setShowAmenitiesModal(false)} />
+                <Amenities onClose={() => setShowAmenitiesModal1(false)} />
             )}
         </>
     );
