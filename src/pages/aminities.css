@@ -1,146 +1,213 @@
-.amenities-modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.55);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    padding: 20px;
-    top: -1000px;
-}
+ .aminities-modal-overlay {
+     position: fixed;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 2000px;
+     background: rgba(0, 0, 0, 0.5);
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     z-index: 1000;
+     padding: 20px;
+     animation: fadeIn 0.3s ease;
+ }
 
-.amenities-modal {
-    background: #fff;
-    border-radius: 14px;
-    width: 100%;
-    max-width: 760px;
-    max-height: 90vh;
-    overflow-y: auto;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-}
+ .aminities-modal {
+     background: white;
+     border-radius: 12px;
+     width: 100%;
+     max-width: 500px;
+     max-height: 90vh;
+     overflow-y: auto;
+     position: relative;
+     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+     animation: slideUp 0.3s ease;
+ }
 
-/* Header */
-.amenities-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 22px 28px;
-    border-bottom: 1px solid #e5e7eb;
-    position: sticky;
-    top: 0;
-    background: #fff;
-}
+ .aminities-close-btn {
+     position: absolute;
+     top: 16px;
+     right: 16px;
+     background: none;
+     border: none;
+     font-size: 20px;
+     color: #666;
+     cursor: pointer;
+     z-index: 10;
+     width: 32px;
+     height: 32px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     border-radius: 50%;
+     transition: background 0.2s ease;
+ }
 
-.amenities-header h2 {
-    font-size: 16px;
-    font-weight: 600;
-    color: #000000;
-}
+ .aminities-close-btn:hover {
+     background: rgba(0, 0, 0, 0.1);
+ }
 
-.close-btn {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #000000;
-    padding: 6px;
-    border-radius: 50%;
-}
+ .aminities-header {
+     text-align: center;
+     padding: 20px 20px 0;
+     border-bottom: 1px solid #e5e7eb;
+ }
 
-.close-btn:hover {
-    background: #f3f4f6;
-}
+ .aminities-header h2 {
+     font-size: 18px;
+     font-weight: 600;
+     color: #111827;
+     margin: 0;
+     padding-bottom: 20px;
+ }
 
-/* Content */
-.amenities-content {
-    padding: 28px;
-}
+ .aminities-content {
+     padding: 24px;
+ }
 
-.amenities-content h3 {
-    font-size: 18px;
-    font-weight: 600;
-    color: #000000;
-    margin-bottom: 20px;
-}
+ .aminities-content h3 {
+     font-size: 20px;
+     font-weight: 600;
+     color: #111827;
+     margin: 0 0 20px 0;
+ }
 
-/* GRID */
-.amenities-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px 24px;
-}
+ .aminities-grid {
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     gap: 12px;
+     margin-bottom: 16px;
+ }
 
-/* ITEM */
-.amenity-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-}
+ .aminity-item {
+     display: flex;
+     align-items: center;
+     gap: 12px;
+     padding: 12px;
+     background: #f8f9fa;
+     border-radius: 8px;
+     border: 1px solid #e5e7eb;
+ }
 
-/* ICON */
-.amenity-icon {
-    width: 38px;
-    height: 38px;
-    background: #f3f4f6;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #000000;
-    flex-shrink: 0;
-}
+ .aminity-icon {
+     width: 32px;
+     height: 32px;
+     background: #e5e7eb;
+     border-radius: 6px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     color: #6b7280;
+     flex-shrink: 0;
+     font-size: 16px;
+ }
 
-/* TEXT */
-.amenity-item span {
-    font-size: 14px;
-    color: #000000;
-    line-height: 1.4;
-    font-weight: 500;
-}
+ .aminity-item span {
+     font-size: 13px;
+     color: #374151;
+     line-height: 1.4;
+     font-weight: 500;
+ }
 
-/* NOTE */
-.amenities-note {
-    font-size: 12px;
-    color: #000000;
-    margin-top: 16px;
-}
+ .aminities-note {
+     font-size: 12px;
+     color: #6b7280;
+     margin: 0 0 24px 0;
+     text-align: left;
+ }
 
-/* DIVIDER LINE */
-.amenities-content hr {
-    margin: 24px 0;
-    border: none;
-    border-top: 1px solid #000000;
-}
+ .place-offers {
+     margin-top: 24px;
+     padding-top: 24px;
+     border-top: 1px solid #e5e7eb;
+ }
 
-/* PLACE OFFERS */
-.place-offers {
-    margin-top: 20px;
-}
+ .place-offers h3 {
+     font-size: 18px;
+     font-weight: 600;
+     color: #111827;
+     margin: 0 0 16px 0;
+ }
 
-.place-offers h3 {
-    font-size: 17px;
-    font-weight: 600;
-    color: #000000;
-    margin-bottom: 10px;
-}
+ .place-offers p {
+     font-size: 14px;
+     color: #6b7280;
+     line-height: 1.6;
+     margin: 0;
+ }
 
-.place-offers p {
-    font-size: 14px;
-    color: #000000;
-    line-height: 1.6;
-}
+ /* Animations */
+ @keyframes fadeIn {
+     from {
+         opacity: 0;
+     }
 
-/* MOBILE */
-@media (max-width: 768px) {
-    .amenities-grid {
-        grid-template-columns: 1fr;
-    }
+     to {
+         opacity: 1;
+     }
+ }
 
-    .amenities-content {
-        padding: 20px;
-    }
-}
+ @keyframes slideUp {
+     from {
+         opacity: 0;
+         transform: translateY(50px);
+     }
+
+     to {
+         opacity: 1;
+         transform: translateY(0);
+     }
+ }
+
+ /* Mobile Responsive */
+ @media (max-width: 768px) {
+     .aminities-modal-overlay {
+         padding: 15px;
+         align-items: flex-start;
+         padding-top: 20px;
+     }
+
+     .aminities-modal {
+         max-width: 95vw;
+         max-height: 95vh;
+     }
+
+     .aminities-grid {
+         grid-template-columns: 1fr;
+     }
+
+     .aminity-item {
+         padding: 10px;
+     }
+
+     .aminities-close-btn {
+         top: 15px;
+         right: 15px;
+         width: 30px;
+         height: 30px;
+     }
+ }
+
+ @media (max-width: 480px) {
+     .aminities-modal-overlay {
+         padding: 10px;
+         padding-top: 15px;
+     }
+
+     .aminities-header h2 {
+         font-size: 16px;
+     }
+
+     .aminities-content h3 {
+         font-size: 18px;
+     }
+
+     .place-offers h3 {
+         font-size: 16px;
+     }
+
+     .aminity-item span {
+         font-size: 12px;
+     }
+ }
