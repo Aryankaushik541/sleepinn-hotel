@@ -355,15 +355,6 @@ export default function Home() {
 
                     </div>
                 </div>
-
-                <section className="spring-promo">
-                    <div className="spring-promo-container">
-                        <h2 className="spring-promo-title">Spring stays = more savings</h2>
-                        <p className="spring-promo-text">
-                            Book your spring getaway and save 20% on 3 nights or more!* Book by April 6, 2026 and stay by April 11, 2026 at participating brands and at participating locations only. *Terms apply.
-                        </p>
-                    </div>
-                </section>
                 {/* ============================ */}
                 <div className="guest-rooms-section" id="guest-rooms">
                     <div className="rooms-header">
@@ -372,18 +363,7 @@ export default function Home() {
                             <h2>Available Guest Rooms</h2>
                         </div>
 
-                        <div className="rooms-controls">
-                            <div className="room-filters">
-                                <span className="filter-item active">🟢 Advance book 30%</span>
-                                <span className="filter-item">🟢 Advance book 14 days</span>
-                                <span className="filter-item">🟢 Pay now and save 10% off BAR</span>
-                            </div>
-
-                            <div className="view-controls">
-                                <button className="view-btn active">Grid</button>
-                                <button className="view-btn">List</button>
-                            </div>
-                        </div>
+                        
                     </div>
 
                     <div className="room-selection-filters">

@@ -1,8 +1,9 @@
+// components/Gallery.jsx
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // 👈 NEW: Import useNavigate
+import { useNavigate } from "react-router-dom";
 import "./gallery.css";
 
-// Import all images at the top (1-33)
+// Import all images
 import img1 from "../Assets/1.jpeg";
 import img2 from "../Assets/2.jpeg";
 import img3 from "../Assets/3.jpeg";
@@ -41,9 +42,8 @@ export default function Gallery() {
     const [currentImage, setCurrentImage] = useState(0);
     const [selectedCategory, setSelectedCategory] = useState("All Photos");
     const [activeTab, setActiveTab] = useState("photos");
-    const navigate = useNavigate(); // 👈 NEW: Initialize navigate
+    const navigate = useNavigate();
 
-    // Updated categories with correct count
     const categories = [
         { name: "All Photos", count: 33 },
         { name: "Rooms & Suites", count: 20 },
@@ -53,7 +53,6 @@ export default function Gallery() {
         { name: "Amenities", count: 2 }
     ];
 
-    // Array of imported images (33 images)
     const imageUrls = [
         img1, img2, img3, img4, img5, img6, img7, img8, img9, img10,
         img11, img12, img13, img14, img15, img16, img17, img18, img19, img20,
@@ -61,13 +60,12 @@ export default function Gallery() {
         img31, img32, img33
     ];
 
-    // Generate images array (33 images)
     const images = imageUrls.map((url, i) => {
         const imageNumber = i + 1;
         return {
             id: imageNumber,
             url: url,
-            caption: `Hotel image ${imageNumber}`,
+            caption: imageNumber === 1 ? "Spacious room with queen beds" : `Rooms & Suites ${imageNumber}`,
             category: imageNumber <= 20 ? "Rooms & Suites" :
                 imageNumber <= 25 ? "Exterior" :
                     imageNumber <= 28 ? "Lobby" :
@@ -76,7 +74,6 @@ export default function Gallery() {
         };
     });
 
-    // Filter images based on selected category
     const filteredImages = selectedCategory === "All Photos"
         ? images
         : images.filter(img => img.category === selectedCategory);
@@ -89,23 +86,27 @@ export default function Gallery() {
         setCurrentImage((prev) => (prev - 1 + filteredImages.length) % filteredImages.length);
     };
 
-    // Reset current image when category changes
     useEffect(() => {
         setCurrentImage(0);
     }, [selectedCategory]);
 
-    // 👈 NEW: Function to handle View Rooms click
-    const handleViewRooms = () => {
-        navigate('/'); // Redirect to home page
+    const handleClose = () => {
+        navigate('/');
     };
 
     return (
         <div className="gallery-container">
+            {/* Close Button - Top Right */}
+            <button className="close-button" onClick={handleClose}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+
             {/* Header */}
             <div className="gallery-header">
-                <h1 className="gallery-title">
-                    Sleep Inn & Suites Searcy near University
-                </h1>
+                <h1 className="gallery-title">Sleep Inn & Suites Searcy near University</h1>
 
                 {/* Tab Navigation */}
                 <div className="tab-navigation">
@@ -123,7 +124,7 @@ export default function Gallery() {
                     </button>
                 </div>
 
-                {/* Category Filters - Only show when Photos tab is active */}
+                {/* Category Filters */}
                 {activeTab === "photos" && (
                     <div className="category-filters">
                         {categories.map((category) => (
@@ -141,7 +142,6 @@ export default function Gallery() {
 
             {/* Main Content Area */}
             <div className="main-image-container">
-                {/* Photos View */}
                 {activeTab === "photos" && (
                     <>
                         <div className="image-wrapper">
@@ -151,22 +151,25 @@ export default function Gallery() {
                                 className="main-image"
                             />
 
-                            {/* Navigation Arrows */}
+                            {/* Left Arrow */}
                             <button
                                 onClick={prevImage}
                                 className="nav-arrow prev"
+                                aria-label="Previous image"
                             >
-                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                    <polyline points="15 18 9 12 15 6"></polyline>
                                 </svg>
                             </button>
 
+                            {/* Right Arrow */}
                             <button
                                 onClick={nextImage}
                                 className="nav-arrow next"
+                                aria-label="Next image"
                             >
-                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
                                 </svg>
                             </button>
 
@@ -198,42 +201,24 @@ export default function Gallery() {
                             ))}
                             {filteredImages.length > 10 && (
                                 <div className="thumbnail-more">
-                                    +{filteredImages.length - 10} more
+                                    +{filteredImages.length - 10}
                                 </div>
                             )}
                         </div>
                     </>
                 )}
 
-                {/* Virtual Tour View */}
                 {activeTab === "virtual-tour" && (
                     <div className="virtual-tour-wrapper">
                         <iframe
                             src="https://www.vpix.net/764425"
                             className="virtual-tour-iframe"
-                            title="Virtual Tour - Sleep Inn & Suites Searcy"
+                            title="Virtual Tour"
                             allowFullScreen
                             frameBorder="0"
                         />
                     </div>
                 )}
-            </div>
-
-            {/* Bottom Section */}
-            <div className="bottom-section">
-                <div className="price-section">
-                    <div className="price-main">
-                        $94 <span className="price-currency">USD/night</span>
-                    </div>
-                    <div className="price-label">Special Rate</div>
-                </div>
-
-                <button
-                    className="view-rooms-button"
-                    onClick={handleViewRooms} // 👈 NEW: Added click handler
-                >
-                    View Rooms
-                </button>
             </div>
         </div>
     );
