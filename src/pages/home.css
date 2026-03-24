@@ -405,23 +405,15 @@ body {
   background: #eff6ff;
 }
 
-/* Mobile Responsive - Overview & Navigation (FIXED) */
+/* Mobile Responsive - Overview & Navigation */
 @media (max-width: 768px) {
   .overview-container {
     padding: 0 16px;
-    max-width: 100%;
-    overflow-x: hidden;
   }
 
   .overview-section {
     display: block;
     margin-top: 40px;
-    width: 100%;
-  }
-
-  .overview-left {
-    width: 100%;
-    margin-bottom: 30px;
   }
 
   .overview-right-wrapper {
@@ -430,7 +422,6 @@ body {
     height: auto;
     top: 0;
     margin-bottom: 30px;
-    position: static;
   }
 
   .overview-right-wrapper::before {
@@ -439,98 +430,51 @@ body {
 
   .overview-right {
     width: 100%;
-    max-width: 100%;
     padding: 20px;
-    margin: 0;
-    box-sizing: border-box;
+    margin-bottom: 25px;
   }
 
   .overview-left h2 {
     font-size: 24px;
     margin: 15px 0;
-    line-height: 1.3;
   }
 
   .desc {
     font-size: 14px;
     max-width: 100%;
     line-height: 1.6;
-    margin-bottom: 15px;
   }
 
-  .tag {
-    font-size: 11px;
-    letter-spacing: 1px;
-  }
-
-  .read-more {
-    font-size: 13px;
-    margin-top: 15px;
-  }
-
-  /* Highlights section fix */
   .highlights-grid {
     grid-template-columns: 1fr;
     gap: 15px;
-    width: 100%;
   }
 
   .highlight-item {
     gap: 10px;
-    width: 100%;
-    box-sizing: border-box;
   }
 
   .highlight-icon {
     min-width: 38px;
     height: 38px;
     font-size: 16px;
-    flex-shrink: 0;
   }
 
-  .highlight-item span {
-    font-size: 13px;
-    line-height: 1.4;
-    flex: 1;
-  }
-
-  .highlight-item small {
-    font-size: 11px;
-  }
-
-  .amenities-btn {
-    padding: 10px 16px;
-    font-size: 13px;
-    width: fit-content;
-  }
-
-  /* Navigation fix */
   .sticky-nav {
     margin: 0 16px;
     border-radius: 8px;
-    width: calc(100% - 32px);
-    max-width: calc(100vw - 32px);
-    box-sizing: border-box;
-  }
-
-  .sticky-nav-container {
-    padding: 0;
-    width: 100%;
-    box-sizing: border-box;
+    top: -5px;
   }
 
   .nav-item {
     padding: 0.7rem 1rem;
     font-size: 0.8rem;
-    min-width: auto;
-    white-space: nowrap;
   }
 }
 
 @media (max-width: 480px) {
   .overview-container {
     padding: 0 12px;
-    max-width: 100%;
   }
 
   .overview-section {
@@ -539,145 +483,47 @@ body {
 
   .overview-right {
     padding: 16px;
-    width: 100%;
-    box-sizing: border-box;
   }
 
   .overview-left h2 {
     font-size: 20px;
-    line-height: 1.2;
   }
 
   .desc {
     font-size: 13px;
-    line-height: 1.5;
   }
 
   .tag {
     font-size: 10px;
-    letter-spacing: 0.5px;
-  }
-
-  .read-more {
-    font-size: 12px;
-  }
-
-  .highlights-grid {
-    gap: 12px;
-  }
-
-  .highlight-item {
-    gap: 8px;
-  }
-
-  .highlight-icon {
-    min-width: 35px;
-    height: 35px;
-    font-size: 15px;
-  }
-
-  .highlight-item span {
-    font-size: 12px;
-  }
-
-  .highlight-item small {
-    font-size: 10px;
   }
 
   .amenities-btn {
-    padding: 8px 14px;
-    font-size: 12px;
+    padding: 10px 16px;
+    font-size: 13px;
   }
 
   .sticky-nav {
     margin: 0 12px;
-    width: calc(100% - 24px);
-    max-width: calc(100vw - 24px);
   }
 
   .nav-item {
     padding: 0.6rem 0.8rem;
     font-size: 0.75rem;
+
   }
 }
 
 @media (max-width: 360px) {
   .overview-container {
     padding: 0 10px;
-    max-width: 100%;
   }
 
   .overview-right {
     padding: 14px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .overview-left h2 {
-    font-size: 18px;
-  }
-
-  .desc {
-    font-size: 12px;
-  }
-
-  .highlights-grid {
-    gap: 10px;
-  }
-
-  .highlight-item {
-    gap: 6px;
-  }
-
-  .highlight-icon {
-    min-width: 32px;
-    height: 32px;
-    font-size: 14px;
-  }
-
-  .highlight-item span {
-    font-size: 11px;
   }
 
   .sticky-nav {
     margin: 0 10px;
-    width: calc(100% - 20px);
-    max-width: calc(100vw - 20px);
-  }
-
-  .nav-item {
-    padding: 0.5rem 0.6rem;
-    font-size: 0.7rem;
-  }
-}
-
-/* Additional fixes for overflow issues */
-* {
-  box-sizing: border-box;
-}
-
-body {
-  overflow-x: hidden;
-  max-width: 100vw;
-}
-
-.overview-right h3 {
-  font-size: 18px;
-  margin-bottom: 18px;
-  line-height: 1.3;
-}
-
-@media (max-width: 768px) {
-  .overview-right h3 {
-    font-size: 16px;
-    margin-bottom: 15px;
-  }
-}
-
-@media (max-width: 480px) {
-  .overview-right h3 {
-    font-size: 15px;
-    margin-bottom: 12px;
   }
 }
 
