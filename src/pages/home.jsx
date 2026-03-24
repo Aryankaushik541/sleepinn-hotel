@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./home.css";
 import Amenities from "./aminities.jsx";
-import Room1 from './room1.jsx'; // Import Room1 component
+import Room1 from './room1.jsx';
 import Room2 from './room2.jsx';
+import Room3 from './room3.jsx'; // Import Room3 component
 import './room2.css';
+
 export default function Home() {
     const [showDesktopDropdown, setShowDesktopDropdown] = useState(false);
     const [showMobileNavigation, setShowMobileNavigation] = useState(false);
@@ -12,12 +14,14 @@ export default function Home() {
     const [activeSection, setActiveSection] = useState("overview");
     const [showAmenitiesModal, setShowAmenitiesModal] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    // Room1 Modal States - MOVED TO TOP LEVEL
+
+    // Room Modal States
     const [isRoom1Open, setIsRoom1Open] = useState(false);
     const [isRoom2Open, setIsRoom2Open] = useState(false);
-    // Functions add karo
+    const [isRoom3Open, setIsRoom3Open] = useState(false); // Add Room3 state
+
     const amenitiesImages = [
-        "https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
         "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&q=80",
         "https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=1200&q=80",
         "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80",
@@ -35,6 +39,19 @@ export default function Home() {
             prev === 0 ? amenitiesImages.length - 1 : prev - 1
         );
     };
+
+    // Room1 Modal Functions
+    const openRoom1Modal = () => {
+        setIsRoom1Open(true);
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeRoom1Modal = () => {
+        setIsRoom1Open(false);
+        document.body.style.overflow = 'unset';
+    };
+
+    // Room2 Modal Functions
     const openRoom2Modal = () => {
         setIsRoom2Open(true);
         document.body.style.overflow = 'hidden';
@@ -44,14 +61,16 @@ export default function Home() {
         setIsRoom2Open(false);
         document.body.style.overflow = 'unset';
     };
-    const openRoom1Modal = () => {
-        setIsRoom1Open(true);
-        document.body.style.overflow = 'hidden'; // Prevent background scroll
+
+    // Room3 Modal Functions
+    const openRoom3Modal = () => {
+        setIsRoom3Open(true);
+        document.body.style.overflow = 'hidden';
     };
 
-    const closeRoom1Modal = () => {
-        setIsRoom1Open(false);
-        document.body.style.overflow = 'unset'; // Restore scroll
+    const closeRoom3Modal = () => {
+        setIsRoom3Open(false);
+        document.body.style.overflow = 'unset';
     };
 
     const navigate = useNavigate();
@@ -316,15 +335,15 @@ export default function Home() {
 
                     </div>
                 </div>
-                <section className="spring-promo">
-      <div className="spring-promo-container">
-        <h2 className="spring-promo-title">Spring stays = more savings</h2>
-        <p className="spring-promo-text">
-          Book your spring getaway and save 20% on 3 nights or more!* Book by April 6, 2026 and stay by April 11, 2026 at participating brands and at participating locations only. *Terms apply.
-        </p>
-      </div>
-    </section>
 
+                <section className="spring-promo">
+                    <div className="spring-promo-container">
+                        <h2 className="spring-promo-title">Spring stays = more savings</h2>
+                        <p className="spring-promo-text">
+                            Book your spring getaway and save 20% on 3 nights or more!* Book by April 6, 2026 and stay by April 11, 2026 at participating brands and at participating locations only. *Terms apply.
+                        </p>
+                    </div>
+                </section>
                 {/* ============================ */}
                 <div className="guest-rooms-section" id="guest-rooms">
                     <div className="rooms-header">
@@ -400,7 +419,7 @@ export default function Home() {
                             </div>
                         </div>
 
-                        {/* Room 2 */}
+                        {/* Room 2 - With Modal */}
                         <div className="room-card">
                             <div className="room-image" onClick={openRoom2Modal} style={{ cursor: 'pointer' }}>
                                 <img src="https://www.choicehotels.com/hoteldam/ar/ar352/images/1280/AR352Exterior3.jpg?webp=true" alt="2 Queen Beds Room" />
@@ -446,14 +465,14 @@ export default function Home() {
                             </div>
                         </div>
 
-                        {/* Room2 Modal */}
-                        <Room2 isOpen={isRoom2Open} onClose={closeRoom2Modal} />
-
-                        {/* Room 3 */}
+                        {/* Room 3 - With Modal */}
                         <div className="room-card">
-                            <div className="room-image">
+                            <div className="room-image" onClick={openRoom3Modal} style={{ cursor: 'pointer' }}>
                                 <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1200&q=80" alt="1 King Bed Suite" />
                                 <span className="room-count">2</span>
+                                <div className="image-overlay">
+                                    <span className="view-photos">View Details</span>
+                                </div>
                             </div>
 
                             <div className="room-details">
@@ -478,7 +497,7 @@ export default function Home() {
                                     </div>
                                 </div>
 
-                                <button className="room-details-btn">Room Details</button>
+                                <button className="room-details-btn" onClick={openRoom3Modal}>Room Details</button>
                             </div>
 
                             <div className="room-pricing">
@@ -494,8 +513,11 @@ export default function Home() {
                     </div>
                 </div>
 
-                {/* Room1 Modal */}
+                {/* Room Modals */}
                 <Room1 isOpen={isRoom1Open} onClose={closeRoom1Modal} />
+                <Room2 isOpen={isRoom2Open} onClose={closeRoom2Modal} />
+                <Room3 isOpen={isRoom3Open} onClose={closeRoom3Modal} />
+
                 {/* ============================ */}
                 <div className="amenities-section" id="amenities">
                     <div className="amenities-left">
@@ -585,6 +607,7 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
+
                 {/* ============================ */}
                 <div className="location-section" id="location">
                     <p className="tag">LOCATION</p>
