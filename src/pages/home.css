@@ -463,7 +463,6 @@ body {
   .sticky-nav {
     margin: 0 16px;
     border-radius: 8px;
-    top: -5px;
   }
 
   .nav-item {
