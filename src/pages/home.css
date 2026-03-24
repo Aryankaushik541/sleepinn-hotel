@@ -67,6 +67,45 @@ body {
 /* Mobile Responsive - Hotel Preview */
 @media (max-width: 768px) {
   .hotel-preview-wrapper {
+    padding: 16px;
+  }
+
+  .hotel-preview {
+    display: block;
+    gap: 12px;
+  }
+
+  .preview-left {
+    margin-bottom: 12px;
+  }
+
+  .preview-left img {
+    height: 240px;
+    border-radius: 12px;
+  }
+
+  .preview-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .preview-right img {
+    height: 120px;
+    border-radius: 8px;
+  }
+
+  .preview-last button {
+    padding: 6px 12px;
+    font-size: 12px;
+    bottom: 8px;
+    left: 8px;
+    border-radius: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hotel-preview-wrapper {
     padding: 12px;
   }
 
@@ -75,53 +114,40 @@ body {
   }
 
   .preview-left img {
-    height: 280px;
+    height: 200px;
+    border-radius: 10px;
   }
 
   .preview-right {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
   }
 
   .preview-right img {
-    height: 140px;
-  }
-}
-
-@media (max-width: 480px) {
-  .hotel-preview-wrapper {
-    padding: 10px;
-  }
-
-  .preview-left img {
-    height: 220px;
-    border-radius: 8px;
-  }
-
-  .preview-right img {
-    height: 110px;
-    border-radius: 8px;
+    height: 100px;
+    border-radius: 6px;
   }
 
   .preview-last button {
-    padding: 6px 10px;
-    font-size: 12px;
-    bottom: 8px;
-    left: 8px;
+    padding: 5px 10px;
+    font-size: 11px;
+    bottom: 6px;
+    left: 6px;
   }
 }
 
 @media (max-width: 360px) {
   .hotel-preview-wrapper {
-    padding: 8px;
+    padding: 10px;
   }
 
   .preview-right {
     grid-template-columns: 1fr;
+    gap: 6px;
   }
 
   .preview-right img {
-    height: 120px;
+    height: 90px;
   }
 }
 
@@ -380,39 +406,14 @@ body {
 }
 
 /* Mobile Responsive - Overview & Navigation */
-@media (max-width: 1024px) {
-  .overview-section {
-    gap: 30px;
-  }
-
-  .overview-left h2 {
-    font-size: 24px;
-  }
-
-  .overview-right {
-    width: auto;
-  }
-
-  .overview-right-wrapper::before {
-    width: 100%;
-  }
-}
-
 @media (max-width: 768px) {
   .overview-container {
-    padding: 0 12px;
+    padding: 0 16px;
   }
 
   .overview-section {
-    grid-template-columns: 1fr;
-    gap: 25px;
+    display: block;
     margin-top: 40px;
-  }
-
-  .overview-right {
-    padding: 20px;
-    order: -1;
-    width: auto;
   }
 
   .overview-right-wrapper {
@@ -420,31 +421,63 @@ body {
     width: 100%;
     height: auto;
     top: 0;
+    margin-bottom: 30px;
   }
 
   .overview-right-wrapper::before {
     display: none;
   }
 
+  .overview-right {
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 25px;
+  }
+
   .overview-left h2 {
-    font-size: 22px;
+    font-size: 24px;
+    margin: 15px 0;
+  }
+
+  .desc {
+    font-size: 14px;
+    max-width: 100%;
+    line-height: 1.6;
   }
 
   .highlights-grid {
     grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .highlight-item {
     gap: 10px;
   }
 
+  .highlight-icon {
+    min-width: 38px;
+    height: 38px;
+    font-size: 16px;
+  }
+
+  .sticky-nav {
+    margin: 0 16px;
+    border-radius: 8px;
+  }
+
   .nav-item {
-    padding: 0.75rem 1rem;
-    font-size: 0.75rem;
+    padding: 0.7rem 1rem;
+    font-size: 0.8rem;
   }
 }
 
 @media (max-width: 480px) {
+  .overview-container {
+    padding: 0 12px;
+  }
+
   .overview-section {
     margin-top: 30px;
-    gap: 20px;
   }
 
   .overview-right {
@@ -452,11 +485,11 @@ body {
   }
 
   .overview-left h2 {
-    font-size: 18px;
+    font-size: 20px;
   }
 
   .desc {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .tag {
@@ -464,13 +497,35 @@ body {
   }
 
   .amenities-btn {
-    padding: 10px 14px;
+    padding: 10px 16px;
     font-size: 13px;
+  }
+
+  .sticky-nav {
+    margin: 0 12px;
+  }
+
+  .nav-item {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .overview-container {
+    padding: 0 10px;
+  }
+
+  .overview-right {
+    padding: 14px;
+  }
+
+  .sticky-nav {
+    margin: 0 10px;
   }
 }
 
 /* ============================ */
-
 .guest-rooms-section {
   margin-top: 60px;
 }
@@ -583,9 +638,7 @@ body {
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   display: flex;
-  /* Main change - flex layout */
   flex-direction: row;
-  /* Horizontal layout */
   width: 100%;
   max-width: 100%;
 }
@@ -599,9 +652,7 @@ body {
 .room-image {
   position: relative;
   width: 300px;
-  /* Fixed width for image */
   min-width: 300px;
-  /* Prevent shrinking */
   height: 250px;
   overflow: hidden;
   cursor: pointer;
@@ -634,9 +685,7 @@ body {
   display: flex;
   flex-direction: column;
   flex: 1;
-  /* Take remaining space */
   min-width: 0;
-  /* Prevent overflow */
 }
 
 .room-details {
@@ -761,59 +810,58 @@ body {
 }
 
 /* Mobile Responsive - Guest Rooms */
-@media (max-width: 1024px) {
-  .rooms-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .rooms-controls {
-    align-items: flex-start;
-    width: 100%;
-    flex-direction: column;
-  }
-
-  .room-filters {
-    justify-content: flex-start;
-  }
-
-  .room-image {
-    width: 250px;
-    min-width: 250px;
-    height: 200px;
-  }
-}
-
 @media (max-width: 768px) {
   .guest-rooms-section {
     margin-top: 40px;
   }
 
   .rooms-header {
+    display: block;
     margin-bottom: 20px;
   }
 
   .rooms-title h2 {
     font-size: 22px;
+    margin-bottom: 15px;
   }
 
   .rooms-controls {
-    gap: 12px;
-    flex-direction: column;
+    display: block;
+    gap: 0;
   }
 
   .room-filters {
-    gap: 10px;
+    margin-bottom: 15px;
+    gap: 8px;
   }
 
   .filter-item {
-    padding: 6px 10px;
+    padding: 6px 12px;
     font-size: 11px;
   }
 
+  .view-controls {
+    gap: 6px;
+  }
+
+  .view-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .room-selection-filters {
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .filter-btn {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+
   .room-card {
-    flex-direction: column;
-    /* Stack vertically on mobile */
+    display: block;
+    border-radius: 12px;
   }
 
   .room-image {
@@ -822,20 +870,53 @@ body {
     height: 200px;
   }
 
+  .room-details {
+    padding: 16px;
+  }
+
+  .room-details h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .room-specs {
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .spec {
+    font-size: 11px;
+    padding: 3px 6px;
+  }
+
+  .feature-row {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .feature-row span {
+    font-size: 12px;
+    display: block;
+    margin-bottom: 4px;
+  }
+
   .room-pricing {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
+    padding: 16px;
+    display: block;
+  }
+
+  .price-info {
+    margin-bottom: 15px;
+  }
+
+  .price {
+    font-size: 20px;
   }
 
   .book-room-btn {
     width: 100%;
-    text-align: center;
-  }
-
-  .feature-row {
-    flex-direction: column;
-    gap: 6px;
+    padding: 12px;
+    font-size: 14px;
   }
 }
 
@@ -849,70 +930,62 @@ body {
   }
 
   .room-filters {
-    flex-direction: column;
-    gap: 8px;
+    display: block;
+    gap: 0;
   }
 
   .filter-item {
-    padding: 5px 8px;
+    display: inline-block;
+    margin: 4px 6px 4px 0;
+    padding: 5px 10px;
     font-size: 10px;
   }
 
-  .view-controls {
-    margin-top: 10px;
-  }
-
   .room-selection-filters {
-    gap: 8px;
-    margin-bottom: 20px;
+    display: block;
+    margin-bottom: 15px;
   }
 
   .filter-btn {
-    padding: 8px 16px;
-    font-size: 13px;
-  }
-
-  .room-details {
-    padding: 16px;
-  }
-
-  .room-details h3 {
-    font-size: 16px;
-  }
-
-  .room-specs {
-    gap: 8px;
-  }
-
-  .spec {
-    font-size: 11px;
-  }
-
-  .feature-row span {
+    display: inline-block;
+    margin: 4px 6px 4px 0;
+    padding: 6px 12px;
     font-size: 12px;
   }
 
+  .room-image {
+    height: 180px;
+  }
+
+  .room-details {
+    padding: 14px;
+  }
+
+  .room-details h3 {
+    font-size: 15px;
+  }
+
   .room-pricing {
-    padding: 16px;
+    padding: 14px;
   }
 
   .price {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .book-room-btn {
-    padding: 10px 20px;
+    padding: 10px;
     font-size: 13px;
   }
 }
 
 @media (max-width: 360px) {
   .room-details {
-    padding: 14px;
+    padding: 12px;
   }
 
   .room-pricing {
-    padding: 14px;
+    padding: 12px;
   }
 
   .rooms-grid {
@@ -1109,71 +1182,16 @@ body {
 }
 
 /* Mobile Responsive - Amenities */
-@media (max-width: 1024px) {
-  .amenities-section {
-    gap: 30px;
-    padding: 30px;
-  }
-
-  .amenities-left h2 {
-    font-size: 22px;
-  }
-}
-
 @media (max-width: 768px) {
   .amenities-section {
-    grid-template-columns: 1fr;
-    gap: 25px;
-    padding: 25px 20px;
+    display: block;
+    gap: 0;
+    padding: 30px 16px;
     margin-top: 40px;
   }
 
-  .amenities-list {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-
   .amenities-right {
-    order: -1;
-  }
-
-  .amenities-slider-container {
-    height: 300px;
-  }
-
-  .amenities-slider-arrow {
-    width: 40px;
-    height: 40px;
-    font-size: 18px;
-  }
-
-  .amenities-slider-arrow-left {
-    left: 15px;
-  }
-
-  .amenities-slider-arrow-right {
-    right: 15px;
-  }
-
-  .amenities-indicator {
-    width: 10px;
-    height: 10px;
-  }
-
-  .amenities-left h2 {
-    font-size: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .amenities-section {
-    padding: 20px 15px;
-    margin-top: 30px;
-    border-radius: 8px;
-  }
-
-  .amenities-left h2 {
-    font-size: 18px;
+    margin-bottom: 30px;
   }
 
   .amenities-slider-container {
@@ -1188,22 +1206,98 @@ body {
   }
 
   .amenities-slider-arrow-left {
-    left: 10px;
+    left: 12px;
   }
 
   .amenities-slider-arrow-right {
-    right: 10px;
+    right: 12px;
+  }
+
+  .amenities-indicator {
+    width: 8px;
+    height: 8px;
+  }
+
+  .amenities-left h2 {
+    font-size: 20px;
+    margin: 15px 0 20px;
+  }
+
+  .amenities-list {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .amenity-item {
+    gap: 10px;
+    font-size: 13px;
+  }
+
+  .amenity-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
   }
 
   .amenities-btn-dark {
-    padding: 10px 14px;
+    padding: 10px 16px;
     font-size: 13px;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .amenities-section {
+    padding: 25px 12px;
+    margin-top: 30px;
+  }
+
+  .amenities-slider-container {
+    height: 200px;
+    border-radius: 10px;
+  }
+
+  .amenities-slider-arrow {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+  }
+
+  .amenities-slider-arrow-left {
+    left: 8px;
+  }
+
+  .amenities-slider-arrow-right {
+    right: 8px;
+  }
+
+  .amenities-left h2 {
+    font-size: 18px;
+  }
+
+  .amenity-item {
+    font-size: 12px;
+  }
+
+  .amenity-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  .amenities-btn-dark {
+    padding: 8px 14px;
+    font-size: 12px;
   }
 }
 
 @media (max-width: 360px) {
   .amenities-section {
-    padding: 16px 12px;
+    padding: 20px 10px;
+  }
+
+  .amenities-slider-container {
+    height: 180px;
   }
 }
 
@@ -1217,6 +1311,27 @@ body {
 .location-section h2 {
   margin: 10px 0 20px;
   font-size: 24px;
+}
+
+/* Mobile Responsive - Location */
+@media (max-width: 768px) {
+  .location-section {
+    margin-top: 40px;
+  }
+
+  .location-section h2 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .location-section {
+    margin-top: 30px;
+  }
+
+  .location-section h2 {
+    font-size: 18px;
+  }
 }
 
 /* ============================ */
@@ -1366,117 +1481,6 @@ body {
 .nearby-icon {
   width: 40px;
   height: 40px;
-  background: #e5e7eb;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-}
-
-/* ============================ */
-/* ITEM */
-/* ============================ */
-.nearby-item {
-  display: flex;
-  flex-direction: column;
-}
-
-/* PLACE */
-.nearby-item span {
-  font-size: 14px;
-  font-weight: 500;
-  color: black;
-}
-
-/* DISTANCE */
-.nearby-item small {
-  font-size: 12px;
-  color: black;
-  margin-top: 2px;
-}
-
-/* Mobile Responsive - Location & Nearby */
-@media (max-width: 1024px) {
-  .nearby-section {
-    gap: 30px;
-  }
-
-  .location-section h2 {
-    font-size: 22px;
-  }
-}
-
-@media (max-width: 768px) {
-  .nearby-section {
-    grid-template-columns: 1fr;
-    gap: 25px;
-    margin-top: 40px;
-  }
-
-  .nearby-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .location-section {
-    margin-top: 40px;
-  }
-
-  .location-section h2 {
-    font-size: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-
-  .nearby-section,
-  .location-section {
-    margin-top: 30px;
-  }
-
-  .location-section h2 {
-    font-size: 18px;
-  }
-}
-
-/* ============================ */
-/* INFO SECTION */
-/* ============================ */
-.info-section {
-  margin-top: 80px;
-}
-
-/* TITLE */
-.info-section h2 {
-  margin-bottom: 30px;
-  font-size: 32px;
-  font-weight: 700;
-}
-
-/* ============================ */
-/* GRID */
-/* ============================ */
-.info-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
-}
-
-/* ============================ */
-/* ITEM */
-/* ============================ */
-.info-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-}
-
-/* ICON BOX */
-/* ICON BOX */
-.nearby-icon {
-  width: 40px;
-  height: 40px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-radius: 12px;
   display: flex;
@@ -1517,7 +1521,9 @@ body {
   transform: translateY(-1px) scale(1.02) rotate(2deg);
 }
 
-/* Hover effect for the whole nearby item */
+/* ============================ */
+/* ITEM */
+/* ============================ */
 .nearby-item {
   display: flex;
   flex-direction: column;
@@ -1541,6 +1547,169 @@ body {
   color: #764ba2;
 }
 
+/* PLACE */
+.nearby-item span {
+  font-size: 14px;
+  font-weight: 500;
+  color: black;
+}
+
+/* DISTANCE */
+.nearby-item small {
+  font-size: 12px;
+  color: black;
+  margin-top: 2px;
+}
+
+/* Mobile Responsive - Nearby */
+@media (max-width: 768px) {
+  .nearby-section {
+    display: block;
+    gap: 0;
+    margin-top: 40px;
+  }
+
+  .nearby-left {
+    margin-bottom: 30px;
+    padding: 16px;
+  }
+
+  .nearby-left h4 {
+    font-size: 16px;
+  }
+
+  .nearby-left p {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .nearby-right h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .nearby-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .nearby-column {
+    gap: 10px;
+  }
+
+  .nearby-heading {
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .nearby-heading h5 {
+    font-size: 14px;
+  }
+
+  .nearby-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+  }
+
+  .nearby-item {
+    padding: 6px;
+  }
+
+  .nearby-item span {
+    font-size: 13px;
+  }
+
+  .nearby-item small {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nearby-section {
+    margin-top: 30px;
+  }
+
+  .nearby-left {
+    padding: 12px;
+  }
+
+  .nearby-left h4 {
+    font-size: 15px;
+  }
+
+  .nearby-left p {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .nearby-right h3 {
+    font-size: 16px;
+  }
+
+  .nearby-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
+
+  .nearby-heading h5 {
+    font-size: 13px;
+  }
+
+  .nearby-item span {
+    font-size: 12px;
+  }
+
+  .nearby-item small {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .nearby-left {
+    padding: 10px;
+  }
+
+  .nearby-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+}
+
+/* ============================ */
+/* INFO SECTION */
+/* ============================ */
+.info-section {
+  margin-top: 80px;
+}
+
+/* TITLE */
+.info-section h2 {
+  margin-bottom: 30px;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+/* ============================ */
+/* GRID */
+/* ============================ */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+/* ============================ */
+/* ITEM */
+/* ============================ */
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
 /* TEXT */
 .info-item h4 {
   font-size: 15px;
@@ -1554,6 +1723,67 @@ body {
   color: black;
   margin-top: 3px;
   line-height: 1.4;
+}
+
+/* Mobile Responsive - Info Section */
+@media (max-width: 768px) {
+  .info-section {
+    margin-top: 40px;
+  }
+
+  .info-section h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .info-item {
+    gap: 12px;
+  }
+
+  .info-item h4 {
+    font-size: 14px;
+  }
+
+  .info-item p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .info-section {
+    margin-top: 30px;
+  }
+
+  .info-section h2 {
+    font-size: 18px;
+  }
+
+  .info-item {
+    gap: 10px;
+  }
+
+  .info-item h4 {
+    font-size: 13px;
+  }
+
+  .info-item p {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 360px) {
+  .info-grid {
+    gap: 12px;
+  }
+
+  .info-item {
+    gap: 8px;
+  }
 }
 
 /* ============================ */
@@ -1780,6 +2010,139 @@ body {
   color: #262235;
 }
 
+/* Mobile Responsive - Reviews */
+@media (max-width: 768px) {
+  .reviews-section {
+    margin-top: 40px;
+  }
+
+  .reviews-header {
+    display: block;
+    margin-bottom: 25px;
+  }
+
+  .reviews-header h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .review-btn {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .reviews-summary {
+    display: block;
+    gap: 0;
+    padding: 20px 16px;
+    text-align: center;
+  }
+
+  .rating-circle {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 25px;
+  }
+
+  .rating-circle h1 {
+    font-size: 36px;
+  }
+
+  .rating-circle span {
+    font-size: 16px;
+  }
+
+  .recommend {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .rating-bars {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .bar-item {
+    display: block;
+    gap: 0;
+  }
+
+  .bar-item span:first-child {
+    width: 100%;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+
+  .bar {
+    margin-bottom: 5px;
+  }
+
+  .bar-item span:last-child {
+    width: 100%;
+    text-align: left;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .reviews-section {
+    margin-top: 30px;
+  }
+
+  .reviews-header h2 {
+    font-size: 18px;
+  }
+
+  .review-btn {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+
+  .reviews-summary {
+    padding: 16px 12px;
+  }
+
+  .rating-circle {
+    width: 100px;
+    height: 100px;
+  }
+
+  .rating-circle h1 {
+    font-size: 28px;
+  }
+
+  .rating-circle span {
+    font-size: 14px;
+  }
+
+  .recommend {
+    font-size: 15px;
+  }
+
+  .bar-item span:first-child {
+    font-size: 13px;
+  }
+
+  .bar-item span:last-child {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 360px) {
+  .reviews-summary {
+    padding: 14px 10px;
+  }
+
+  .rating-circle {
+    width: 90px;
+    height: 90px;
+  }
+
+  .rating-circle h1 {
+    font-size: 24px;
+  }
+}
+
 /* ============================ */
 /* ENHANCED REVIEW CARDS */
 /* ============================ */
@@ -1895,92 +2258,116 @@ body {
   letter-spacing: 0.5px;
 }
 
-/* ============================ */
-/* MOBILE RESPONSIVENESS */
-/* ============================ */
+/* Mobile Responsive - Review Cards */
 @media (max-width: 768px) {
-  .reviews-header {
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 30px;
-  }
-
-  .reviews-summary {
-    flex-direction: column;
-    gap: 30px;
-    padding: 25px 20px;
-    text-align: center;
-  }
-
-  .rating-circle {
-    width: 150px;
-    height: 150px;
-  }
-
-  .rating-circle h1 {
-    font-size: 48px;
-  }
-
-  .rating-bars {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .bar-item span:first-child {
-    width: 120px;
-  }
-
   .reviews-cards {
     grid-template-columns: 1fr;
     gap: 20px;
   }
 
   .review-card {
-    padding: 25px 20px;
+    padding: 20px 16px;
+  }
+
+  .stars {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .stars span {
+    font-size: 14px;
+  }
+
+  .review-card h4 {
+    font-size: 16px;
+    margin: 12px 0;
+  }
+
+  .review-card p {
+    font-size: 14px;
   }
 
   .review-footer {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
+    margin-top: 20px;
+    padding-top: 15px;
+    display: block;
+  }
+
+  .name {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .date {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .verified {
+    font-size: 10px;
+    padding: 5px 10px;
   }
 }
 
 @media (max-width: 480px) {
-  .reviews-summary {
-    padding: 20px 15px;
-  }
-
-  .rating-circle {
-    width: 120px;
-    height: 120px;
-  }
-
-  .rating-circle h1 {
-    font-size: 36px;
-  }
-
-  .rating-circle span {
-    font-size: 16px;
-  }
-
   .review-card {
-    padding: 20px 15px;
+    padding: 16px 12px;
   }
 
-  .bar-item {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+  .stars {
+    font-size: 14px;
   }
 
-  .bar-item span:first-child {
-    width: 100%;
+  .stars span {
+    font-size: 13px;
   }
 
-  .bar-item span:last-child {
-    width: 100%;
-    text-align: left;
+  .review-card h4 {
+    font-size: 15px;
+  }
+
+  .review-card p {
+    font-size: 13px;
+  }
+
+  .review-footer {
+    margin-top: 15px;
+    padding-top: 12px;
+  }
+
+  .name {
+    font-size: 13px;
+  }
+
+  .date {
+    font-size: 11px;
+  }
+
+  .verified {
+    font-size: 9px;
+    padding: 4px 8px;
+  }
+}
+
+@media (max-width: 360px) {
+  .review-card {
+    padding: 14px 10px;
+  }
+
+  .review-card h4 {
+    font-size: 14px;
+  }
+
+  .review-card p {
+    font-size: 12px;
+  }
+}
+
+/* Hover effects for desktop */
+@media (min-width: 769px) {
+  .review-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
   }
 }
 
@@ -2193,167 +2580,12 @@ body {
   opacity: 0.95;
 }
 
-/* Mobile Responsive - All Sections */
-@media (max-width: 1024px) {
-
-  .info-section h2,
-  .reviews-header h2 {
-    font-size: 22px;
-  }
-
-  .spring-promo {
-    padding: 32px 24px;
-  }
-
-  .spring-promo-title {
-    font-size: 28px;
-  }
-
-  .spring-promo-text {
-    font-size: 15px;
-  }
-}
-
+/* Mobile Responsive - Contact & Spring Promo */
 @media (max-width: 768px) {
-
-  /* Info */
-  .info-section {
-    margin-top: 40px;
-  }
-
-  .info-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-
-  .info-section h2 {
-    font-size: 20px;
-  }
-
-  /* Reviews */
-  .reviews-section {
-    margin-top: 40px;
-  }
-
-  .reviews-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-  }
-
-  .reviews-header h2 {
-    font-size: 20px;
-  }
-
-  .reviews-summary {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 25px;
-  }
-
-  .rating-bars {
-    grid-template-columns: 1fr;
-    gap: 15px;
-    width: 100%;
-  }
-
-  .reviews-cards {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .review-card {
-    padding: 20px;
-  }
-
-  /* Contact */
   .contact-section {
     padding: 40px 16px;
   }
 
-  .contact-header h2 {
-    font-size: 28px;
-  }
-
-  .contact-content {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .contact-form {
-    padding: 24px 20px;
-  }
-
-  .form-row {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-
-  .contact-item {
-    padding: 16px;
-  }
-
-  .contact-icon {
-    width: 45px;
-    height: 45px;
-    font-size: 20px;
-  }
-
-  /* Spring Promo */
-  .spring-promo {
-    padding: 24px 16px;
-  }
-
-  .spring-promo-title {
-    font-size: 22px;
-    margin-bottom: 12px;
-  }
-
-  .spring-promo-text {
-    font-size: 14px;
-    line-height: 1.5;
-  }
-}
-
-@media (max-width: 480px) {
-
-  /* Info */
-  .info-section {
-    margin-top: 30px;
-  }
-
-  .info-section h2 {
-    font-size: 18px;
-  }
-
-  /* Reviews */
-  .reviews-section {
-    margin-top: 30px;
-  }
-
-  .reviews-header h2 {
-    font-size: 18px;
-  }
-
-  .review-card {
-    padding: 16px;
-  }
-
-  .rating-circle {
-    width: 100px;
-    height: 100px;
-  }
-
-  .rating-circle h1 {
-    font-size: 28px;
-  }
-
-  .review-btn {
-    padding: 10px 14px;
-    font-size: 13px;
-  }
-
-  /* Contact */
   .contact-header h2 {
     font-size: 24px;
   }
@@ -2362,13 +2594,24 @@ body {
     font-size: 14px;
   }
 
-  .contact-form {
-    padding: 20px 16px;
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .contact-info {
+    gap: 20px;
   }
 
   .contact-item {
+    padding: 16px;
     gap: 12px;
-    padding: 14px;
+  }
+
+  .ctacont-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
   }
 
   .contact-item h4 {
@@ -2377,6 +2620,19 @@ body {
 
   .contact-item p {
     font-size: 14px;
+  }
+
+  .contact-item small {
+    font-size: 12px;
+  }
+
+  .contact-form {
+    padding: 20px 16px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
   }
 
   .contact-form input,
@@ -2390,14 +2646,60 @@ body {
     font-size: 15px;
   }
 
-  /* Spring Promo */
   .spring-promo {
-    padding: 20px 12px;
+    padding: 20px 16px;
+  }
+
+  .spring-promo-title {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .spring-promo-text {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section {
+    padding: 30px 12px;
+  }
+
+  .contact-header h2 {
+    font-size: 20px;
+  }
+
+  .contact-item {
+    padding: 14px;
+  }
+
+  .ctacont-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
+
+  .contact-form {
+    padding: 16px 12px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .submit-btn {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+
+  .spring-promo {
+    padding: 16px 12px;
   }
 
   .spring-promo-title {
     font-size: 18px;
-    margin-bottom: 10px;
   }
 
   .spring-promo-text {
@@ -2406,24 +2708,20 @@ body {
 }
 
 @media (max-width: 360px) {
-  .review-card {
-    padding: 14px;
-  }
-
-  .contact-form {
-    padding: 16px 12px;
+  .contact-section {
+    padding: 25px 10px;
   }
 
   .contact-item {
     padding: 12px;
   }
-}
 
-/* Hover effects for desktop */
-@media (min-width: 769px) {
-  .review-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  .contact-form {
+    padding: 14px 10px;
+  }
+
+  .spring-promo {
+    padding: 14px 10px;
   }
 }
 
