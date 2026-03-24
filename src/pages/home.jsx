@@ -14,7 +14,7 @@ export default function Home() {
     const [activeSection, setActiveSection] = useState("overview");
     const [showAmenitiesModal, setShowAmenitiesModal] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
+    const [activeFilter, setActiveFilter] = useState('all');
     // Room Modal States
     const [isRoom1Open, setIsRoom1Open] = useState(false);
     const [isRoom2Open, setIsRoom2Open] = useState(false);
@@ -39,6 +39,26 @@ export default function Home() {
             prev === 0 ? amenitiesImages.length - 1 : prev - 1
         );
     };
+    // Component ke top mein rooms data define karo
+    const roomsData = [
+        { id: 1, type: '1bed', component: <Room1 /> },
+        { id: 2, type: '1bed', component: <Room2 /> },
+        { id: 3, type: '2bed', component: <Room3 /> }
+    ];
+
+    // Filter logic
+    const filteredRooms = activeFilter === 'all'
+        ? roomsData
+        : roomsData.filter(room => room.type === activeFilter);
+
+    // JSX mein render karo
+    {
+        filteredRooms.map(room => (
+            <div key={room.id}>
+                {room.component}
+            </div>
+        ))
+    }
 
     // Room1 Modal Functions
     const openRoom1Modal = () => {
@@ -367,11 +387,26 @@ export default function Home() {
                     </div>
 
                     <div className="room-selection-filters">
-                        <button className="filter-btn active">All rooms</button>
-                        <button className="filter-btn">🛏️ 1 Bed (2)</button>
-                        <button className="filter-btn">🛏️ 2+ Beds (1)</button>
+                        <button
+                            className={`filter-btn ${activeFilter === 'all' ? 'active' : ''}`}
+                            onClick={() => setActiveFilter('all')}
+                        >
+                            All rooms
+                        </button>
+                        <button
+                            className={`filter-btn ${activeFilter === '1bed' ? 'active' : ''}`}
+                            onClick={() => setActiveFilter('1bed')}
+                        >
+                            🛏️ 1 Bed (2)
+                        </button>
+                        <button
+                            className={`filter-btn ${activeFilter === '2bed' ? 'active' : ''}`}
+                            onClick={() => setActiveFilter('2bed')}
+                        >
+                            🛏️ 2+ Beds (1)
+                        </button>
                     </div>
-
+                    
                     <div className="rooms-grid">
                         {/* Room 1 - With Modal */}
                         <div className="room-card">
@@ -499,6 +534,7 @@ export default function Home() {
 
                                 <button className="room-details-btn" onClick={openRoom3Modal}>Room Details</button>
                             </div>
+                            
 
                             <div className="room-pricing">
                                 <div className="price-info">
